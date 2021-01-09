@@ -61,7 +61,7 @@ $(function () {
             name: "Slim Fit Cotton Oxford Shirt",
             gender: "woman",
             price: 500,
-            image: ["dist/img/products/Slim Fit Cotton Oxford Shirt.jpg"],
+            image: ["dist/img/products/Slim Fit Cotton Oxford Shirt.jpg", "dist/img/products/Slim_Fit_Cotton_Oxford_Shirt_Pink.jpg"],
             brand: "LEVI'S",
             rating: 0,
             status: "",
@@ -276,7 +276,7 @@ $(function () {
             status: "",
             category: []
         }
-    ] 
+    ]
 
     $('.woman-products .owl-carousel').owlCarousel(
         //những option bên dưới ở chỗ api web owl carousel
@@ -286,11 +286,52 @@ $(function () {
             loop: true,
             nav: true,
             navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
-            dots: true
+            dots: false,
+            mouseDrag: false
         }
     );
-
-    renderProductsCarousel(product, ".woman-products .owl-carousel");
+    
+    let idSpecialWoman = 6;
+    renderProductsCarousel(product, ".woman-products .owl-carousel", idSpecialWoman);
+    
+    //chọn parameters ở products
+    $(".woman-products .slider .item .item-content .parameters .choose-image-references button").click(function (e) { 
+        e.preventDefault();
+        $(".woman-products .slider .item .item-content .parameters .choose-image-references button").removeClass("blueBorder");
+        $(this).addClass("blueBorder");
+        
+        //đổi hình
+        let href = $(this).children("img").attr("src"); //lấy link hình của img button đó đang giữ
+        let id = $(this).data("id-product"); //ko lấy ngược lên cha của nó đc nên dùng cách tạo và lấy id rồi tìm  
+        console.log("href: " + href);
+        console.log("id: " + id);
+        let arrItems = $(".woman-products .owl-carousel .item"); //owl tự cloned các item, vậy nên có active và clone item, length sẽ đc gấp đôi lên, mình sửa cả clone và active là đc, html 2 cái giống nhau
+        console.log("arrLen: " + arrItems.length);
+        for(let i = 0; i < arrItems.length; i++){
+            let findId = $(arrItems[i]).data("id-product");
+            if(findId == id){
+                console.log("ok");
+                console.log(arrItems[i]);
+                $(arrItems[i]).find(".image img").attr("src", href); //dùng find thì nó tìm hết các phần con, còn children ở trên thì tìm con trực tiếp thôi
+                $(arrItems[i]).addClass("background-color");
+            }
+        }
+        
+        //let items = e.item.count;
+        //console.log(e.item.count);
+        //$(".woman-products .owl-carousel").trigger('to.owl.carousel', 2);
+        
+    });
+    $(".woman-products .slider .item .item-content .parameters .choose-size button").click(function (e) { 
+        e.preventDefault();
+        $(".woman-products .slider .item .item-content .parameters .choose-size button").removeClass("active");
+        $(this).addClass("active");
+    });
+    $(".woman-products .slider .item .item-content .parameters .choose-materials button").click(function (e) { 
+        e.preventDefault();
+        $(".woman-products .slider .item .item-content .parameters .choose-materials button").removeClass("blueBorder");
+        $(this).addClass("blueBorder");
+    });
 
     //-------------phần dưới của buổi học lần trc
     $(".products-owl .owl-carousel").owlCarousel(
@@ -336,13 +377,13 @@ $(function () {
     const allCategory = $(".products .category a");
     for (let i = 0; i < allCategory.length; i++) {
         if ($(allCategory[i]).hasClass("active")) {
-          const category = $(allCategory[i]).data("category");
-          const activeProducts = products.filter((val) =>
-            val.category.includes(category)
-          );
-          renderOwl(activeProducts, ".products-owl .owl-carousel");
+            const category = $(allCategory[i]).data("category");
+            const activeProducts = products.filter((val) =>
+                val.category.includes(category)
+            );
+            renderOwl(activeProducts, ".products-owl .owl-carousel");
         }
-      }
+    }
 
     $(".products .category a").click(function (e) {
         e.preventDefault();
@@ -351,44 +392,45 @@ $(function () {
 
         //lấy category
         const category = $(this).data("category");
-        const filterProducts =  products.filter((val) => val.category.includes(category));
+        const filterProducts = products.filter((val) => val.category.includes(category));
         removeOwl(products, ".products-owl .owl-carousel");
         renderOwl(filterProducts, ".products-owl .owl-carousel");
     });
 
     //d09122020
-    $(".show-modal").click(function (e) { 
+    $(".show-modal").click(function (e) {
         e.preventDefault();
         //$(".modal").show(); // bằng với display: block
         $(".modal").fadeIn(); // bằng với display: block + opacity dần dần
-        $(".modal").click(function (e) { 
+        $(".modal").click(function (e) {
             e.preventDefault();
             //$(".modal").hide();
             $(".modal").fadeOut();
         });
     });
-    $(".modal-content").click(function (e) { 
+    $(".modal-content").click(function (e) {
         e.preventDefault();
         e.stopPropagation(); //ngăn sự lan truyền của cùng một sự kiện được gọi
     });
 });
 
-function removeProductsCarousel(list, selector){
+function removeProductsCarousel(list, selector) {
     //remove all item in owl
-    for(let i = 0; i < list.length; i++){
+    for (let i = 0; i < list.length; i++) {
         $(selector)
-        .trigger("remove.owl.carousel", i)
-        .trigger("refresh.owl.carousel");
+            .trigger("remove.owl.carousel", i)
+            .trigger("refresh.owl.carousel");
     }
     //$(selector).trigger("replace.owl.carousel","").trigger("refresh.owl.carousel");
 }
 
-function renderProductsCarousel(list, selector){  
-    //thêm hàm reverse vì cái carousel này  
+function renderProductsCarousel(list, selector, idSpecial) {
+
+    //thêm hàm reverse vì cái carousel này
     list.reverse().map((val, index) => {
         $(selector)
-        .trigger("add.owl.carousel", [`
-        <div class="item">
+            .trigger("add.owl.carousel", [`
+        <div class="item" data-id-product="${val.id}">
             <div class="image">
                 <img src="${val.image[0]}" alt="">
                 <div class="invisible-part">
@@ -426,8 +468,29 @@ function renderProductsCarousel(list, selector){
                     </a>
                 </div>
                 <div class="price">
-                    $${val.price - 100 >= 500 ? 0: val.price}
+                    $${val.price - 100 >= 500 ? 0 : val.price}
                 </div>
+
+                ${val.id == idSpecial ? 
+                `
+                <div class="parameters">
+                    <div class="choose-image-references">
+                        <button class="blueBorder" data-id-product="${val.id}"><img src="${val.image[0]}" alt=""></button>
+                        <button data-id-product="${val.id}"><img src="${val.image[1]}" alt=""></button>
+                    </div>
+                    <div class="choose-size">
+                        <button class="active">S</button>
+                        <button>M</button>
+                        <button>L</button>
+                    </div>
+                    <div class="choose-materials">
+                        <button class="blueBorder"><img src="dist/img/materials/material1.PNG" alt=""></button>
+                        <button><img src="dist/img/materials/material2.PNG" alt=""></button>
+                        <button><img src="dist/img/materials/material3.PNG" alt=""></button>                            
+                    </div>
+                </div>
+                `
+                : ""}
 
                 <div class="btn-add">
                     <a href=""><i class="far fa-calendar"></i> ADD TO CARD</a>
@@ -435,25 +498,25 @@ function renderProductsCarousel(list, selector){
             </div>
         </div>
         `, index])
-        .trigger("refresh.owl.carousel");
+            .trigger("refresh.owl.carousel");
     });
 }
 
-function removeOwl(list, selector){
+function removeOwl(list, selector) {
     //remove all item in owl
-    for(let i = 0; i < list.length; i++){
+    for (let i = 0; i < list.length; i++) {
         $(selector)
-        .trigger("remove.owl.carousel", i)
-        .trigger("refresh.owl.carousel");
+            .trigger("remove.owl.carousel", i)
+            .trigger("refresh.owl.carousel");
     }
     //$(selector).trigger("replace.owl.carousel","").trigger("refresh.owl.carousel");
 }
 
-function renderOwl(list, selector){  
+function renderOwl(list, selector) {
     //thêm hàm reverse vì cái carousel này  
     list.reverse().map((val, index) => {
         $(selector)
-        .trigger("add.owl.carousel", [`<div class = "item">${val.name}</div>`, index])
-        .trigger("refresh.owl.carousel");
+            .trigger("add.owl.carousel", [`<div class = "item">${val.name}</div>`, index])
+            .trigger("refresh.owl.carousel");
     });
 }
