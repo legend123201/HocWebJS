@@ -410,7 +410,7 @@ $(function () {
     });
     $(".modal-content").click(function (e) {
         e.preventDefault();
-        e.stopPropagation(); //ngăn sự lan truyền của cùng một sự kiện được gọi
+        e.stopPropagation(); //ngăn sự lan truyền của cùng một sự kiện được gọi (chỉ phù hợp với quan hệ cha con)
     });
 });
 

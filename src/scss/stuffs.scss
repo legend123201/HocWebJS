@@ -1,0 +1,33 @@
+
+
+.profile-img {
+    position: relative;
+    .image {
+        img {
+            width: 100%;
+        }
+    }
+    .content {
+        position: absolute;
+        bottom: 40px;
+        right: 37px;
+        color: rgb(250, 195, 77);
+        // border: 1px solid white;
+        padding: 10px;
+        //background-color: rgb(250, 189, 109);
+        p:nth-child(1) {
+            font-size: 30px;
+            color: orange;
+            font-family: 'Handlee', cursive;
+        }
+        p:nth-child(2) {
+            font-size: 25px;
+            font-family: 'Dancing Script', cursive;
+        }
+        p:nth-child(3) {
+            //margin-top: 15px;
+            font-size: 25px;
+            font-family: 'Dancing Script', cursive;
+        }
+    }
+}
