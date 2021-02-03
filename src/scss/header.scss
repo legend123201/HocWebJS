@@ -1,75 +1,4 @@
-@import "flex";
-@import "grid";
-
-$headerBreakpoint: 1024px;
-
-//id="block-just-now"
-#block {
-    .dropdown {
-        display: flex;
-    }
-}
-
-img {
-    display: block;
-    width: 100%;
-}
-
-body {
-    font-family: "Roboto", sans-serif;
-}
-
-@keyframes FadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes FadeOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-@keyframes FadeInAndFromTopDown {
-    0% {
-        opacity: 0;
-        //margin-top: -10px;
-        transform: translateY(-20px);
-    }
-    100% {
-        opacity: 1;
-        //margin-top: 0;
-        transform: translateY(0);
-    }
-}
-
-@keyframes FadeOutAndFromBottomUp {
-    0% {
-        opacity: 1;
-        margin-top: 0;
-    }
-    100% {
-        opacity: 0;
-        margin-top: -10px;
-    }
-}
-
-@keyframes ShowBottomUp {
-    0% {
-        //ko dùng tranform đc vì ở dưới đã có tranform X Y tùm lum, nếu muốn dùng thì phải cấu hình cái X cũ và cái Y mới
-        margin-top: 10px;
-    }
-    100% {
-        margin-top: 0;
-    }
-}
+@import "variables";
 
 header {
     .orange,
@@ -167,28 +96,22 @@ header {
 
                                                         //trường hợp a có dropdown-image
                                                         .dropdown-image {
-                                                            transition: all 5s;
-                                                            display: block;
-                                                            //animation: FadeInAndFromTopDown 1s forwards;
-                                                            //transform: translateY(0px) scale(1);
-                                                            // opacity: 1;
+                                                            visibility: visible;
+                                                            transform: translateY(0);
+                                                            opacity: 1;
                                                         }
                                                     }
                                                     //trường hợp a có dropdown-image
                                                     .dropdown-image {
-                                                        //-webkit-animation: FadeOutAndFromBottomUp 1s forwards;
-                                                        transition: all 5s;
-                                                        display: none;
+                                                        transition: all 0.4s;                                                        
                                                         position: absolute;
                                                         top: 0;
                                                         left: 100px;
                                                         width: 150px;
                                                         z-index: 99;
-                                                        //animation: FadeOutAndFromBottomUp 1s forwards;
-                                                        //transition: scale 0.4s, translateY 0.4s, opacity 0.4s;
-                                                        //transition: all 0.4s;
-                                                        //transform: translateY(-20px) scale(0);
-                                                        //opacity: 0;
+                                                        visibility: hidden;
+                                                        transform: translateY(-20px);
+                                                        opacity: 0;
                                                     }
                                                 }
                                                 &:first-child {
@@ -443,6 +366,7 @@ header {
                 top: 0;
                 left: 0;
                 width: 100%;
+                z-index: 100;
 
                 animation: FadeIn 0.6s forwards;
                 .container {
@@ -611,15 +535,15 @@ header {
                     }
                 }
             }
-        }
-        &.fixed {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+            &.fixed {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 100;
 
-            animation: FadeIn 0.6s forwards;
-            
+                animation: FadeIn 0.6s forwards;
+            }
         }
     }
 }
@@ -627,4 +551,8 @@ header {
 .part2 {
     height: 1000px;
     background-color: rgb(243, 210, 21);
+    * {
+        position: relative;
+        z-index: 10;
+    }
 }

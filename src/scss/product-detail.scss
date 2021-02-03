@@ -1,0 +1,18 @@
+@import "grid";
+
+.lala{
+    .one{
+        background-color: red;
+        position: relative;
+        //padding: 50px;
+        .image{
+            padding: 50px;
+            .img{
+                height: 500px;
+                width: 100%;
+                background-color: aqua;
+            }
+        }
+        
+    }
+}

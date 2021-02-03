@@ -1,51 +1,9 @@
-$(function () {
-    //lấy khoảng cách từ part2 lên trên cùng page
-    let position = $(".part2").position();
-    const top = position.top;
-
-    //bắt sự kiện trang web cuộn chuột
-    $(window).scroll(function () {
-        //bắt sự kiện nếu qua phần part2 thì header fixed
-        const positionWindow = $(window).scrollTop();
-        if (positionWindow >= top) {
-            $("header").addClass("fixed");
-        } else {
-            $("header").removeClass("fixed");
-        }
-    });
-
-    // $("#a").hover(function () {
-    //         // over
-    //         $(".dropdown").show();
-    //     }, function () {
-    //         // out
-    //         $(".dropdown").hide();
-    //     }
-    // );
-
-    $(".owl-carousel").owlCarousel(
-        //những option bên dưới ở chỗ api web owl carousel
-        {
-            items: 3,
-            margin: 20,
-            loop: true,
-            nav: true,
-            navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
-            dots: false
-        }
-    );
-
-    // $(".dropdown a").hover(function () {
-    //         // over
-    //         $(".dropdown a .dropdown-image").animate({
-    //             display: 'block',
-    //             animation: 'FadeInAndFromTopDown 1s forwards'
-    //         });
-    //     }, function () {
-    //         // out
-    //         // $(".dropdown a .dropdown-image").css(propertyName, value);
-    //     }
-    // );
+//ko để bất cứ gì ngoài đây vì để ngoài đây thì nó chạy song song với load document html
+$(document).ready(function () {
+    //chỉ duy nhất ở đây trong đồ án mới có ready function, vì nếu những file kia ko dùng on('load', func()) thì nó chạy loạn xạ, cái này chưa load xong html mà mấy cái file kia đã chạy, thành ra mấy file kia ko tìm thấy html đâu để làm việc
+    $("header.big-screen").load("header.html .big-screen >*");
+    $("header.small-screen").load("header.html .small-screen >*");
+    $("section.women-start").load("women-start.html section.women-start >*");
+    $("section.women-products").load("women-products.html section.women-products >*");
+    $("footer").load("footer.html footer >*");
 });
-
-

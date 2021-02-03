@@ -1,9 +1,21 @@
-$(document).ready(function () {
+$(window).on("load", function () {
+    $('header.big-screen .owl-carousel').owlCarousel(
+        //những option bên dưới ở chỗ api web owl carousel
+        {
+            items: 3,
+            margin: 20,
+            loop: true,
+            nav: true,
+            navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
+            dots: false,
+        }
+    );
+
     let currentIndexUpToNow = 1; //biến này sẽ giữ giá trị index và gán cho cái nav nào cần nổi lên của header, cứ tự cộng lên hoài
     let widthNavLevel1 = $("header.small-screen .level-1").width();
     let valueCurrentTranlateX = 0; //phải tạo biến cái này vì nếu dùng get css transform nhưng mà nó sẽ trả về 1 matrix, hồi xưa tranlateX là phần tử index 5 trong matrix, giờ thì là 4, có sự thay đổi nên hơi nguy hiểm
     //bấm vào nav level-1 thì level-1 lùi 100%
-    $("header.small-screen .level-1 >ul >li:not(.close) >a").click(function (e) { 
+    $("header.small-screen .level-1 >ul >li:not(.close) >a").click(function (e) {
         e.preventDefault();
         $("header.small-screen .level-1").css("transform", "translateX(-100%)");
         valueCurrentTranlateX -= widthNavLevel1;
@@ -12,9 +24,10 @@ $(document).ready(function () {
         //$(this).css("background-color", "red");
         currentIndexUpToNow++;
     });
+    console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
     //bấm vào nav level-2 thì level-1 lùi 200%
     //li:not(.back) nghĩa là li ko phải class back, có thể sửa là li:not(:first-child) nếu nó là first child
-    $("header.small-screen .level-2 >ul >li:not(.back) >a").click(function (e) { 
+    $("header.small-screen .level-2 >ul >li:not(.back) >a").click(function (e) {
         e.preventDefault();
         $("header.small-screen .level-1").css("transform", "translateX(-200%)");
         valueCurrentTranlateX -= widthNavLevel1;
@@ -23,17 +36,17 @@ $(document).ready(function () {
         currentIndexUpToNow++;
     });
     //bấm vào class back thì quay lại
-    $("header.small-screen .back >a").click(function (e) { 
+    $("header.small-screen .back >a").click(function (e) {
         e.preventDefault();
         //e.stopPropagation(); //từ đầu code bên trên ko có :not(.back), thì sử dụng cái này để khi nhấn vào back thì chỉ có code ở đây dùng thôi, nhưng ko sử dụng đc vì cái này ngăn sự lan truyền của cùng một sự kiện được gọi (chỉ phù hợp với quan hệ cha con)
         valueCurrentTranlateX += widthNavLevel1;
         console.log(valueCurrentTranlateX + "            3");
-        let css = "translateX(" + valueCurrentTranlateX +"px)";
+        let css = "translateX(" + valueCurrentTranlateX + "px)";
         $("header.small-screen .level-1").css("transform", css);
     });
 
     //bấm vào class close thì page nav biến mất
-    $("header.small-screen .close >a").click(function (e) { 
+    $("header.small-screen .close >a").click(function (e) {
         e.preventDefault();
         $("header.small-screen .page-nav").css("transform", "translateX(-101%)");
         $("header.small-screen .modal").fadeOut();//cái này mờ dần sau đó display none, siêu đã
@@ -41,7 +54,7 @@ $(document).ready(function () {
     });
 
     //bấm vào humberger-btn thì page nav hiện ra
-    $("header.small-screen .humberger-btn a").click(function (e) { 
+    $("header.small-screen .humberger-btn a").click(function (e) {
         e.preventDefault();
         $("header.small-screen .page-nav").css("transform", "translateX(0)");
         //$("header.small-screen .modal").css("display", "block");
@@ -51,7 +64,7 @@ $(document).ready(function () {
         $("header.small-screen .level-1").css("transition", "all 0.4s");
     });
 
-    $("header.small-screen .modal").click(function (e) { 
+    $("header.small-screen .modal").click(function (e) {
         e.preventDefault();
         $("header.small-screen .page-nav").css("transform", "translateX(-101%)");
         $("header.small-screen .modal").fadeOut();//cái này mờ dần sau đó display none, siêu đã
@@ -64,22 +77,15 @@ $(document).ready(function () {
     });
 
     //lấy khoảng cách từ part2 lên trên cùng page
-    let position = $(".part2").position();
-    const top = position.top;
+    const part2PositionTop = $("header").last().next().position().top; //có 2 header, thì lấy cái header cuối trỏ next là ra cái part2.
     //bắt sự kiện trang web cuộn chuột
     $(window).scroll(function () {
-        //bắt sự kiện nếu qua phần part2 thì header fixed
-        const positionWindow = $(window).scrollTop();
-        if (positionWindow >= top) {
+        //bắt sự kiện nếu qua phần position top part2 thì header fixed, position top part2 này thực ra có thay đổi, nhưng mình chỉ lấy cái giá trị đầu tiên khi trang đc load làm chuẩn và cho vào biến const, làm như thế thì khi cuộn sẽ tạo cảm giác cái header luôn ở đó
+        //$(window).scrollTop(); //lấy vị trí trên của màn hình để tính
+        if ($(window).scrollTop() >= part2PositionTop) {
             $("header").addClass("fixed");
         } else {
             $("header").removeClass("fixed");
         }
     });
-
-    let t = $("header.small-screen .level-1 >ul >li >a");
-    console.log(t.length);
-    let t2 = $('header.small-screen .level-1').css('transform');
-    console.log(t2);
-
 });

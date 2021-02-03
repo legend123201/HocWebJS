@@ -1,10 +1,7 @@
-@import "flex";
-@import "grid";
-$lightBlue: rgb(1, 90, 255);
-$darkblue: rgb(17, 82, 202);
+@import "variables";
 
 section.women-start {
-    background: url(/dist/img/background/backgroundWomen.png) no-repeat top center/cover;
+    background: url(/dist/img/background/backgroundWomen.png) no-repeat center/cover;
     background-attachment: fixed;
     height: 650px;
     display: flex;
@@ -38,13 +35,12 @@ section.women-start {
             background-color: $darkblue;
         }
     }
-    @media (max-width: 600px) {
-        background-size: 100%;
-        
+    @media (max-width: 400px) {
+        height: 250px;
     }
     @media (max-width: 789px) {
         height: 350px;
-        background-size: contain;
+        
         h2{
             font-size: 20px;
         }
@@ -59,8 +55,11 @@ section.women-start {
             }
         }
     }
-    @media (max-width: 1199px) {
+    @media (max-width: $headerBreakpoint) {
+        background-attachment: initial; //bỏ cái fixed, nếu ko hình ảnh sẽ ko cover full cái div chứa nó
         height: 550px;
     }
+    //thuộc tính nào ở cái media max width cao hơn thì sẽ áp dụng cho tất cả các cái media max width nhỏ hơn nếu như cái nhỏ ko có thuộc tính đó
+    //nếu cái media max width nhỏ hơn cũng có thuộc tính đó thì nó ưu tiên cho cái nhỏ hơn
 }
 

@@ -1,0 +1,60 @@
+@import "flex";
+@import "grid";
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+//các biến thì ko để đây đc, vì những file scss dùng cái biến đó sẽ lỗi, nhưng các animation thì để đây đc, mấy file scss kia vẫn hiểu, mặc dù html khi import để cái scss dùng animation thứ tự đằng trước cái file initial này vẫn ok bình thường
+//đã test trường hợp cứ để biến trong đây, mặc kệ thông báo lỗi, nhưng nó chỉ chạy file đã chạy đúng lần trc, sửa số ko có tác dụng, nhưng thay đổi animation trong đây thì animation vẫn thay đổi thật, vậy là visual studio code báo lỗi chuẩn chỉnh
+@keyframes FadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes FadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes FadeInAndFromTopDown {
+    0% {
+        opacity: 0;
+        //margin-top: -10px;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        //margin-top: 0;
+        transform: translateY(0);
+    }
+}
+
+@keyframes FadeOutAndFromBottomUp {
+    0% {
+        opacity: 1;
+        margin-top: 0;
+    }
+    100% {
+        opacity: 0;
+        margin-top: -10px;
+    }
+}
+
+@keyframes ShowBottomUp {
+    0% {
+        //ko dùng tranform đc vì ở dưới đã có tranform X Y tùm lum, nếu muốn dùng thì phải cấu hình cái X cũ và cái Y mới
+        margin-top: 10px;
+    }
+    100% {
+        margin-top: 0;
+    }
+}
