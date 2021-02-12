@@ -24,7 +24,7 @@ $(window).on("load", function () {
         //$(this).css("background-color", "red");
         currentIndexUpToNow++;
     });
-    console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+    
     //bấm vào nav level-2 thì level-1 lùi 200%
     //li:not(.back) nghĩa là li ko phải class back, có thể sửa là li:not(:first-child) nếu nó là first child
     $("header.small-screen .level-2 >ul >li:not(.back) >a").click(function (e) {
@@ -88,4 +88,8 @@ $(window).on("load", function () {
             $("header").removeClass("fixed");
         }
     });
+    
+
 });
+
+

@@ -4,6 +4,10 @@
 	flex-wrap: wrap;
 }
 
+.path-to-page {
+	background-color: gainsboro;
+}
+
 .lala {
 	margin-top: 30px;
 }

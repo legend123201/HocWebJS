@@ -76,7 +76,7 @@ header {
                                     max-height: 90vh;
                                     overflow: auto;
                                     padding: 35px;
-
+                                    z-index: 100; //nó phải luôn đè lên những cái khác
                                     //cái row đầu tiên phải width: 100%; thì li WOMAN mới ok, why?
                                     // > .row {
                                     //     width: 100%;
@@ -433,7 +433,7 @@ header {
 
                 .page-nav {
                     position: fixed;
-                    z-index: 99;
+                    z-index: 100; //ko có cái nào đè lên nó, nó có z-index to nhất
                     top: 0;
                     left: 0;
                     width: 250px;
@@ -551,8 +551,8 @@ header {
 .part2 {
     height: 1000px;
     background-color: rgb(243, 210, 21);
-    * {
-        position: relative;
-        z-index: 10;
-    }
+    // * {
+    //     position: relative;
+    //     //z-index: 10;
+    // }
 }

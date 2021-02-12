@@ -31,11 +31,6 @@ header .red {
 	background-color: #f3d215;
 }
 
-.part2 * {
-	position: relative;
-	z-index: 10;
-}
-
 @media (min-width: 1024px) {
 
 header.small-screen {
@@ -95,6 +90,7 @@ header.big-screen .container .page-nav > nav > ul > li .full-width {
 
 header.big-screen .container .page-nav > nav > ul > li .dropdown {
 	position: absolute;
+	z-index: 100;
 	visibility: hidden;
 	overflow: auto;
 	max-height: 90vh;
@@ -449,7 +445,7 @@ header.small-screen .container .modal {
 
 header.small-screen .container .page-nav {
 	position: fixed;
-	z-index: 99;
+	z-index: 100;
 	top: 0;
 	left: 0;
 	overflow: hidden;

@@ -19,7 +19,9 @@
     <!-- word font link -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
     <title>Đồ Án Cuối Khoá</title>
+
 </head>
 
 <body>
@@ -28,22 +30,26 @@
     <section class="women-start">
     </section>
     <section class="women-products">
-        
     </section>
     <section class="women-start">
     </section>
     <section class="women-products">
-        
+
     </section>
     <footer></footer>
+
+    <!-- phải để các script ở trong body, để khi refresh nó mới chạy lại, thì mới có các event -->
+    <!-- cdn phải nằm trên cùng ?? why -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <script src="dist/js/owl.carousel.min.js"></script>
+    <script src="src/js/loadHTMLIndex.js"></script>
+    <script src="src/js/main.js"></script>
+    <script src="src/js/header.js"></script>
+    <script src="src/js/women-products.js"></script>
+    <script src="src/js/footer.js"></script>    
 </body>
-<!-- cdn phải nằm trên cùng ?? why -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-    crossorigin="anonymous"></script>
-<script src="dist/js/owl.carousel.min.js"></script>
-<script src="src/js/main.js"></script>
-<script src="src/js/header.js"></script>
-<script src="src/js/women-products.js"></script>
-<script src="src/js/footer.js"></script>
+
+<!-- để script ở đây thì nó ko chạy lại khi refresh, nó chỉ chạy lúc đầu load cái html này và nút f5 và các hoạt động load lại trang -->
 </html>
