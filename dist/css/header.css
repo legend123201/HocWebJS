@@ -387,6 +387,7 @@ header.big-screen.fixed {
 	width: 100%;
 	-webkit-animation: FadeIn .6s forwards;
 	animation: FadeIn .6s forwards;
+	box-shadow: 0 1px 10px gray;
 }
 
 header.big-screen.fixed .container {
@@ -557,6 +558,7 @@ header.small-screen.fixed {
 	width: 100%;
 	-webkit-animation: FadeIn .6s forwards;
 	animation: FadeIn .6s forwards;
+	box-shadow: 0 1px 10px gray;
 }
 
 }

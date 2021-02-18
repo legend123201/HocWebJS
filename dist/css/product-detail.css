@@ -5,33 +5,23 @@
 }
 
 .path-to-page {
+	margin-bottom: 50px;
 	background-color: gainsboro;
 }
 
-.lala {
-	margin-top: 30px;
-}
-
-.lala .one {
+.product-detail__images {
 	position: relative;
 	background-color: red;
 }
 
-.lala .one .image {
+.product-detail__images .image {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
-	padding: 0 50px;
 }
 
-.lala .one .image .img {
-	width: 100%;
-	height: 500px;
-	background-color: aqua;
-}
-
-.lala .one .image.fixed {
+.product-detail__images .image.fixed {
 	position: fixed;
 }
 

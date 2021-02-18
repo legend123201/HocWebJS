@@ -1,34 +1,25 @@
 @import "grid";
 
-.path-to-page{
+.path-to-page {
     background-color: gainsboro;
-    // .container{
-
-    // }
+    margin-bottom: 50px;
 }
 
-.lala{
-    margin-top: 30px;
-    .one{
+.product-detail {
+    
+    &__images {
         background-color: red;
         position: relative;
-        //padding: 50px;
-        .image{
-            padding: 0 50px;
+
+        .image {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            .img{
-                height: 500px;
-                width: 100%;
-                background-color: aqua;
-                
-            }
-            &.fixed{
-                position: fixed;       
+    
+            &.fixed {
+                position: fixed;
             }
         }
-        
     }
 }

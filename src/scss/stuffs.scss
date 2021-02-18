@@ -31,8 +31,10 @@
 }
 
 h1 {
+    z-index: 5;
     position: relative;
     background-color: red;
+    cursor: pointer;
     .dropdown-wrapper {
         position: absolute;
         border: 1px solid black;
@@ -40,15 +42,15 @@ h1 {
         background-color: red;
         //transition: all 0.4s ease-in;
         transition: all 0.2s;
-        max-height: 0;
-        visibility: hidden;
+        //max-height: 0;
+        //visibility: hidden;
         //overflow: hidden;
         .dropdown {
             padding: 10px; 
         }
     }
 
-    &:hover {
+    &.show {
         
         .dropdown-wrapper {
             max-height: 200px;

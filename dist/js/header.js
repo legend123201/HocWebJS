@@ -76,20 +76,29 @@ $(window).on("load", function () {
         $("header.small-screen .level-1").css("transition", "none"); //đặt dòng này ở đâu thì nó cũng chạy "song song đầu tiên" (cái transform ở trên bị dòng này tác động ko có transition đc), kiểu như nó biên dịch hết các css 1 thể rồi chạy 1 lần
     });
 
+    $("body").prepend("<div class='fake-header'></div>");
     //lấy khoảng cách từ part2 lên trên cùng page
-    const part2PositionTop = $("header").last().next().position().top; //có 2 header, thì lấy cái header cuối trỏ next là ra cái part2.
+    let part2PositionTop = $("header").last().next().offset().top; //có 2 header, thì lấy cái header cuối trỏ next là ra cái part2.
+
     //bắt sự kiện trang web cuộn chuột
     $(window).scroll(function () {
         //bắt sự kiện nếu qua phần position top part2 thì header fixed, position top part2 này thực ra có thay đổi, nhưng mình chỉ lấy cái giá trị đầu tiên khi trang đc load làm chuẩn và cho vào biến const, làm như thế thì khi cuộn sẽ tạo cảm giác cái header luôn ở đó
         //$(window).scrollTop(); //lấy vị trí trên của màn hình để tính
         if ($(window).scrollTop() >= part2PositionTop) {
             $("header").addClass("fixed");
+            $(".fake-header").css("height", part2PositionTop); //ko dùng jq get height cho header, bởi vì nó ko tính margin, padding, border của header.với cả height của 2 cái big screen và small screen cũng khác nhau, lại phải làm if else mệt người
         } else {
             $("header").removeClass("fixed");
+            $(".fake-header").css("height", 0);
         }
     });
-    
 
+    //khi chỉnh sửa màn hình thì cập nhật lại 1 số thứ
+    $(window).resize(function () { 
+        part2PositionTop = $("header").last().next().position().top;
+
+    });
+   
 });
 
 
