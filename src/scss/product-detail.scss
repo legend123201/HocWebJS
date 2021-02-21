@@ -24,10 +24,10 @@
     }
     &__content {
         padding-left: 40px !important;
-        @mixin blackThenGrayText{
+        @mixin blackThenGrayText {
             p {
                 font-size: 14px;
-                >* {
+                > * {
                     color: gray;
                     font-size: 100%;
                 }
@@ -35,7 +35,7 @@
         }
         .product-info {
             @include blackThenGrayText();
-            p{
+            p {
                 line-height: 28px;
             }
             .product-name {
@@ -61,7 +61,8 @@
                 }
             }
         }
-        .guide-info, .personal-options {
+        .guide-info,
+        .personal-options {
             ul {
                 li {
                     a {
@@ -88,7 +89,7 @@
                 }
             }
         }
-        .guide-info{
+        .guide-info {
             margin-top: 40px;
         }
         form {
@@ -140,10 +141,12 @@
                         transform: translate(-50%, -50%);
                     }
                 }
-
             }
-            .input-group{
+            .input-group {
                 margin-top: 20px;
+                input {
+                    margin-right: 10px;
+                }
             }
             #terms-agreement:checked {
                 ~ .btn-buy {
@@ -171,75 +174,84 @@
                 }
             }
         }
-        .personal-options{
+        .personal-options {
             margin-top: 30px;
         }
-        .payment-list{
+        .payment-list {
             margin-top: 30px;
-            &__title{
+            &__title {
                 display: flex;
                 align-items: center;
-                &::after, &::before{
+                font-size: 16px;
+                &::after,
+                &::before {
                     content: "";
-                    
-                    height: 3px;    
-                    background-color: black;
+                    height: 3px;
+                    background-color: gainsboro;
                     flex-grow: 1;
-                    
                 }
-                &::after{
+                &::after {
                     margin-left: 10px;
                 }
-                &::before{
+                &::before {
                     margin-right: 10px;
                 }
             }
-            &__images{
-                margin-top: 10px;
+            &__images {
+                margin-top: 20px;
                 align-items: center;
                 justify-content: space-between;
                 height: 10px;
-                ul{
-                    li{
-                        flex-grow: 1;
-                        a{
-                            display: block
-                        }
+                li {
+                    margin-right: 10px;
+                    a {
+                        display: block;
                     }
+                }
+                li:last-child{
+                    margin-right: 0 !important;
                 }
             }
         }
-        .product-extra-info{
+        .product-extra-info {
             @include blackThenGrayText();
             margin-top: 40px;
         }
-        .description{
-            ul{
-                li{
+        .description {
+            ul {
+                li {
                     border-bottom: 1px solid gainsboro;
                     //padding-bottom: 30px;
-                    .title{
+                    .title {
                         font-size: 14px;
                         padding: 20px 0;
                         margin: 2px 0;
                         cursor: pointer;
+                        color: gray;
+                        font-weight: 500;
+
+                        &.active,
+                        &:hover {
+                            color: black;
+                        }
                     }
-                    .dropdown{
+                    .dropdown {
                         display: none;
                         padding-bottom: 22px !important;
-                        p, a{
+                        p,
+                        a {
                             font-size: 14px;
                         }
-                        h3{
+                        h3 {
                             font-size: 16px;
                         }
                     }
-                    &:first-child{
-                        .dropdown{
+                    &:first-child {
+                        .dropdown {
                             display: block;
                         }
                     }
-                    &:last-child{
+                    &:last-child {
                         border-bottom: unset;
                     }
                 }

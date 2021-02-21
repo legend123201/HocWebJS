@@ -165,6 +165,10 @@
 	margin-top: 20px;
 }
 
+.product-detail__content form .input-group input {
+	margin-right: 10px;
+}
+
 .product-detail__content form #terms-agreement:checked ~ .btn-buy {
 	cursor: pointer;
 }
@@ -201,6 +205,7 @@
 }
 
 .product-detail__content .payment-list__title {
+	font-size: 16px;
 	display: flex;
 	align-items: center;
 }
@@ -209,7 +214,7 @@
 .product-detail__content .payment-list__title::before {
 	height: 3px;
 	content: '';
-	background-color: black;
+	background-color: gainsboro;
 	flex-grow: 1;
 }
 
@@ -223,17 +228,21 @@
 
 .product-detail__content .payment-list__images {
 	height: 10px;
-	margin-top: 10px;
+	margin-top: 20px;
 	align-items: center;
 	justify-content: space-between;
 }
 
-.product-detail__content .payment-list__images ul li {
-	flex-grow: 1;
+.product-detail__content .payment-list__images li {
+	margin-right: 10px;
 }
 
-.product-detail__content .payment-list__images ul li a {
+.product-detail__content .payment-list__images li a {
 	display: block;
+}
+
+.product-detail__content .payment-list__images li:last-child {
+	margin-right: 0 !important;
 }
 
 .product-detail__content .product-extra-info {
@@ -255,9 +264,16 @@
 
 .product-detail__content .description ul li .title {
 	font-size: 14px;
+	font-weight: 500;
 	margin: 2px 0;
 	padding: 20px 0;
 	cursor: pointer;
+	color: gray;
+}
+
+.product-detail__content .description ul li .title.active,
+.product-detail__content .description ul li .title:hover {
+	color: black;
 }
 
 .product-detail__content .description ul li .dropdown {

@@ -57,7 +57,7 @@ $(window).on("load", function () {
     let startBreakpoint = $(".product-detail").offset().top;
     let productDetailOffsetBottom = $(".product-detail").offset().top + $(".product-detail").height();//cái nào ko có mar, pad nên dùng height() là đủ
     let endBreakpoint = productDetailOffsetBottom - $(".product-detail__images .image").height();
-    console.log("before slide: " + $(".product-detail").height());
+
     //mình phải lấy đc chiều cao lúc header fixed, vì header lúc đầu có cái hình nên height rất là cao, trên web cũng chỉ xử lý với height đã fixed
     $(currentHeaderSelector).addClass("fixed");
     let currentFixedHeaderOuterHeight = $(currentHeaderSelector).outerHeight(true);//header có margin
@@ -86,12 +86,13 @@ $(window).on("load", function () {
     //-------------ẤN VÀO TIÊU ĐỀ DECRIPTION THÌ DROPDOWN TRƯỢT LÊN TRƯỢT XUỐNG------------START
     $(".product-detail__content .description ul li .title").click(function (e) {
         e.preventDefault();
-        $(this).next().slideToggle(function () {
+        $(this).toggleClass("active");
+        $(this).next().slideToggle(200, function () {
             // Animation complete.
             productDetailOffsetBottom = $(".product-detail").offset().top + $(".product-detail").height();//cái nào ko có mar, pad nên dùng height() là đủ
             endBreakpoint = productDetailOffsetBottom - $(".product-detail__images .image").height();
-            console.log("after slide: " + $(".product-detail").height());
-            scrollExcuteCode();
+
+            scrollExcuteCode(); //dùng hàm này để cập nhật ví trí cho image khi nội dung product detail dài ra hoặc ngắn lại.
         });
     });
     //-------------ẤN VÀO TIÊU ĐỀ DECRIPTION THÌ DROPDOWN TRƯỢT LÊN TRƯỢT XUỐNG------------END
@@ -100,10 +101,20 @@ $(window).on("load", function () {
 
     //khi chỉnh sửa màn hình thì cập nhật lại 1 số thứ
     $(window).resize(function () {
+        //cập nhật lại header đang dùng cho màn hình nào
         for (let i = 0; i < arrHeaderSelector.length; i++) {
             if ($(arrHeaderSelector[i]).css("display") != "none") {
                 currentHeaderSelector = arrHeaderSelector[i];
             }
         }
+
+        //cập nhật lại các biến để postion image
+        startBreakpoint = $(".product-detail").offset().top;
+        productDetailOffsetBottom = $(".product-detail").offset().top + $(".product-detail").height();//cái nào ko có mar, pad nên dùng height() là đủ
+        endBreakpoint = productDetailOffsetBottom - $(".product-detail__images .image").height();
+        $(currentHeaderSelector).addClass("fixed");
+        currentFixedHeaderOuterHeight = $(currentHeaderSelector).outerHeight(true);//header có margin
+        $(currentHeaderSelector).removeClass("fixed");
+        productDetailOffsetTop = $(".product-detail").offset().top;
     });
 });
