@@ -1,4 +1,5 @@
 @import "grid";
+@import "variables";
 
 .path-to-page {
     background-color: gainsboro;
@@ -6,7 +7,6 @@
 }
 
 .product-detail {
-    
     &__images {
         background-color: red;
         position: relative;
@@ -16,9 +16,233 @@
             top: 0;
             left: 0;
             width: 100%;
-    
+
             &.fixed {
                 position: fixed;
+            }
+        }
+    }
+    &__content {
+        padding-left: 40px !important;
+        @mixin blackThenGrayText{
+            p {
+                font-size: 14px;
+                >* {
+                    color: gray;
+                    font-size: 100%;
+                }
+            }
+        }
+        .product-info {
+            @include blackThenGrayText();
+            p{
+                line-height: 28px;
+            }
+            .product-name {
+                font-size: 30px;
+                margin-top: 25px;
+                line-height: 40px;
+            }
+            .product-price {
+                font-size: 30px;
+                color: $lightBlue;
+                line-height: 40px;
+            }
+            .evaluate {
+                margin-top: 10px;
+                i::before {
+                    color: gray;
+                    font-size: 14px;
+                }
+                span {
+                    color: $lightBlue;
+                    font-size: 14px;
+                    margin-left: 10px;
+                }
+            }
+        }
+        .guide-info, .personal-options {
+            ul {
+                li {
+                    a {
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 12px;
+                        font-size: 14px;
+                        i {
+                            font-size: 18px;
+                            padding-right: 10px;
+                        }
+                    }
+                }
+                li:nth-child(3) {
+                    margin-left: auto;
+                    a {
+                        padding-right: 0 !important;
+                    }
+                }
+                li:first-child {
+                    a {
+                        padding-left: 0 !important;
+                    }
+                }
+            }
+        }
+        .guide-info{
+            margin-top: 40px;
+        }
+        form {
+            margin-top: 35px;
+            .flex {
+                .input-number {
+                    background-color: gainsboro;
+                    border-radius: 5px;
+                    display: flex;
+                    width: fit-content;
+                    height: 50px;
+                    width: 150px;
+                    margin-right: 20px;
+
+                    span {
+                        flex-grow: 2;
+                        position: relative;
+                        cursor: pointer;
+                        &.minus-btn::before,
+                        &.plus-btn::before {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+                        &.minus-btn::before {
+                            content: "-";
+                        }
+                        &.plus-btn::before {
+                            content: "+";
+                        }
+                    }
+                    input {
+                        width: 0; //input ko sử dụng flex-grow hay flex-shrink đc, vì cái width của nó theo mặc định trình duyệt.
+                        flex-grow: 1;
+                        padding: 0 10px;
+                        background-color: inherit;
+                    }
+                }
+                .btn-cart-adding {
+                    background-color: $lightBlue;
+                    flex: 1;
+                    position: relative;
+                    border-radius: 5px;
+                    > * {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+
+            }
+            .input-group{
+                margin-top: 20px;
+            }
+            #terms-agreement:checked {
+                ~ .btn-buy {
+                    cursor: pointer;
+                    &:after {
+                        background-color: rgba(white, 0);
+                    }
+                }
+            }
+            .btn-buy {
+                position: relative;
+                background-color: $lightOrange;
+                margin-top: 20px;
+                padding: 15px;
+                text-align: center;
+                border-radius: 5px;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    background-color: rgba(white, 0.5);
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                }
+            }
+        }
+        .personal-options{
+            margin-top: 30px;
+        }
+        .payment-list{
+            margin-top: 30px;
+            &__title{
+                display: flex;
+                align-items: center;
+                &::after, &::before{
+                    content: "";
+                    
+                    height: 3px;    
+                    background-color: black;
+                    flex-grow: 1;
+                    
+                }
+                &::after{
+                    margin-left: 10px;
+                }
+                &::before{
+                    margin-right: 10px;
+                }
+            }
+            &__images{
+                margin-top: 10px;
+                align-items: center;
+                justify-content: space-between;
+                height: 10px;
+                ul{
+                    li{
+                        flex-grow: 1;
+                        a{
+                            display: block
+                        }
+                    }
+                }
+            }
+        }
+        .product-extra-info{
+            @include blackThenGrayText();
+            margin-top: 40px;
+        }
+        .description{
+            ul{
+                li{
+                    border-bottom: 1px solid gainsboro;
+                    //padding-bottom: 30px;
+                    .title{
+                        font-size: 14px;
+                        padding: 20px 0;
+                        margin: 2px 0;
+                        cursor: pointer;
+                    }
+                    .dropdown{
+                        display: none;
+                        padding-bottom: 22px !important;
+                        p, a{
+                            font-size: 14px;
+                        }
+                        h3{
+                            font-size: 16px;
+                        }
+                    }
+                    &:first-child{
+                        .dropdown{
+                            display: block;
+                        }
+                    }
+                    &:last-child{
+                        border-bottom: unset;
+                    }
+                }
             }
         }
     }

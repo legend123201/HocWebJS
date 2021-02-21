@@ -67,35 +67,54 @@
                     </div>
                     <div class="guide-info">
                         <ul class="flex">
-                            <li><a href="">Size guide</a></li>
-                            <li><a href="">Shipping</a></li>
-                            <li><a href="">Ask about this product</a></li>
+                            <li>
+                                <a href="">
+                                    <i class="fab fa-airbnb"></i>
+                                    <p>Size guide</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fas fa-dolly"></i>
+                                    <p>Shipping</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="far fa-envelope"></i>
+                                    <p>Ask about this product</p>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <form action="">
-                        <div class="input-number">
-                            <span>-</span>
-                            <input type="text" name="" id="">
-                            <span>+</span>
+                        <div class="flex">
+                            <div class="input-number">
+                                <span class="minus-btn"></span>
+                                <input type="text" name="" id="">
+                                <span class="plus-btn"></span>
+                            </div>
+                            <div class="btn-cart-adding">
+                                <span>ADD TO CART</span>
+                            </div>
                         </div>
-                        <div class="btn-cart-adding">
-                            ADD TO CART
+                        <div class="input-group">
+                            <input type="checkbox" name="terms-agreement" id="terms-agreement">
+                            <label for="terms-agreement">I agree with the terms and conditions</label>
                         </div>
-                        <input type="checkbox" name="terms-agreement" id="terms-agreement">
-                        <label for="terms-agreement">I agree with the terms and conditions</label>
                         <div class="btn-buy">
-                            BUY IT NOW
+                            <span>BUY IT NOW</span>
                         </div>
                     </form>
                     <div class="personal-options">
                         <ul class="flex">
-                            <li>ADD TO WISHLIST</li>
-                            <li>ADD TO COMPARE</li>
+                            <li><a href=""> <i class="far fa-heart"></i> <p>ADD TO WISHLIST</p> </a></li>
+                            <li><a href=""><i class="fas fa-balance-scale"></i><p>ADD TO COMPARE</p></a></li>
                         </ul>
                     </div>
                     <div class="payment-list">
-                        <h3>Guaranteed Safe Checkout</h3>
-                        <ul class="flex">
+                        <h3 class="payment-list__title">Guaranteed Safe Checkout</h3>
+                        <ul class="payment-list__images flex">
                             <li><a href=""><img src="dist/img/footer/AES256_x42.png" alt=""></a></li>
                             <li><a href=""><img src="dist/img/footer/american-express_x42.png" alt=""></a></li>
                             <li><a href=""><img src="dist/img/footer/discover_x42.png" alt=""></a></li>
@@ -107,15 +126,15 @@
                         </ul>
                     </div>
                     <div class="product-extra-info">
-                        <p>Vendor: <span>lacoste</span></p>
-                        <p>Product Type: <span>scarf</span></p>
+                        <p>Vendor: <a href="">lacoste</a></p>
+                        <p>Product Type: <a>scarf</a></p>
                         <p>Barcode: <span>123456789</span></p>
-                        <p>Tags: <span>Vintage, Awesome, Summer, Beachwear</span></p>
+                        <p>Tags: <a>Vintage, Awesome, Summer, Beachwear</a></p>
                     </div>
                     <div class="description">
                         <ul>
                             <li>
-                                <h2>DESCRIPTION</h2>
+                                <h2 class="title">DESCRIPTION</h2>
                                 <div class="dropdown">
                                     <p>We are proud to present our best premium Shopify theme - Wokiee.</p>
                                     <p>This is multi-purpose software that can be used for any type of the store. Great
@@ -130,7 +149,7 @@
                                 </div>
                             </li>
                             <li>
-                                <h2>ADDITIONAL INFORMATION</h2>
+                                <h2 class="title">ADDITIONAL INFORMATION</h2>
                                 <div class="dropdown">
                                     <p>Color:<span> Blue, Purple, White</span></p>
                                     <p>Size:<span> 20, 24</span></p>
@@ -138,11 +157,14 @@
                                 </div>
                             </li>
                             <li>
-                                <h2>REVIEWS</h2>
-                                <h3>CUSTOMER REVIEWS</h3>
-                                <div class="dropdown flex">
-                                    <p>No reviews yet</p>
-                                    <a href="">Write a review</a>
+                                <h2 class="title">REVIEWS</h2>
+                                <div class="dropdown">
+                                    <h3>CUSTOMER REVIEWS</h3>
+                                    <div class="flex">
+                                        <p>No reviews yet</p>
+                                        <a href="">Write a review</a>
+                                    </div>
+                                    
                                 </div>
                             </li>
                         </ul>

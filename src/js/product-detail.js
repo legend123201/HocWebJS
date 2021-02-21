@@ -52,34 +52,51 @@ $(window).on("load", function () {
         }
     });
     */
-
+    //-------------XỬ LÝ CUỘN CHUỘT CHO PRODUCT IMAGE POSITION CUỘN THEO TRANG WEB-----------START
     //headerBottomPositionWith10px nằm trong khoảng start và end break point thì mới sửa css
     let startBreakpoint = $(".product-detail").offset().top;
     let productDetailOffsetBottom = $(".product-detail").offset().top + $(".product-detail").height();//cái nào ko có mar, pad nên dùng height() là đủ
     let endBreakpoint = productDetailOffsetBottom - $(".product-detail__images .image").height();
-
+    console.log("before slide: " + $(".product-detail").height());
     //mình phải lấy đc chiều cao lúc header fixed, vì header lúc đầu có cái hình nên height rất là cao, trên web cũng chỉ xử lý với height đã fixed
     $(currentHeaderSelector).addClass("fixed");
     let currentFixedHeaderOuterHeight = $(currentHeaderSelector).outerHeight(true);//header có margin
     $(currentHeaderSelector).removeClass("fixed");
 
     let productDetailOffsetTop = $(".product-detail").offset().top;
+    function scrollExcuteCode() {
+        //lấy chiều cao của header + 10px là ra đường break point chuẩn để position cái image
+        let headerBottomPositionWith10px = $(window).scrollTop() + currentFixedHeaderOuterHeight + 10;
+        if (headerBottomPositionWith10px < startBreakpoint) {
+            $(".image").css({ "top": `0px`, "left": "0", "bottom": `unset` });
+        }
+        else if (headerBottomPositionWith10px > endBreakpoint) {
+            $(".image").css({ "bottom": `0px`, "left": "0", "top": "unset" });
+        }
+        else {
+            let khucTangThem = headerBottomPositionWith10px - productDetailOffsetTop;
+            $(".image").css({ "top": `${khucTangThem}px`, "left": "0", "bottom": `unset` });
+        }
+    }
     $(window).scroll(function () {
-        
-            //lấy chiều cao của header + 10px là ra đường break point chuẩn để position cái image
-            let headerBottomPositionWith10px = $(window).scrollTop() + currentFixedHeaderOuterHeight + 10; 
-            if (headerBottomPositionWith10px < startBreakpoint) {
-                $(".image").css({ "top": `0px`, "left": "0", "bottom": `unset` });
-            }
-            else if (headerBottomPositionWith10px > endBreakpoint) {
-                $(".image").css({ "bottom": `0px`, "left": "0", "top": "unset" });
-            }
-            else {
-                let khucTangThem = headerBottomPositionWith10px - productDetailOffsetTop;
-                $(".image").css({ "top": `${khucTangThem}px`, "left": "0", "bottom": `unset` });
-            }
-        
+        scrollExcuteCode();
     });
+    //-------------XỬ LÝ CUỘN CHUỘT CHO PRODUCT IMAGE POSITION CUỘN THEO TRANG WEB-----------END
+
+    //-------------ẤN VÀO TIÊU ĐỀ DECRIPTION THÌ DROPDOWN TRƯỢT LÊN TRƯỢT XUỐNG------------START
+    $(".product-detail__content .description ul li .title").click(function (e) {
+        e.preventDefault();
+        $(this).next().slideToggle(function () {
+            // Animation complete.
+            productDetailOffsetBottom = $(".product-detail").offset().top + $(".product-detail").height();//cái nào ko có mar, pad nên dùng height() là đủ
+            endBreakpoint = productDetailOffsetBottom - $(".product-detail__images .image").height();
+            console.log("after slide: " + $(".product-detail").height());
+            scrollExcuteCode();
+        });
+    });
+    //-------------ẤN VÀO TIÊU ĐỀ DECRIPTION THÌ DROPDOWN TRƯỢT LÊN TRƯỢT XUỐNG------------END
+
+
 
     //khi chỉnh sửa màn hình thì cập nhật lại 1 số thứ
     $(window).resize(function () {
