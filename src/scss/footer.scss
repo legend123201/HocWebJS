@@ -1,4 +1,5 @@
 @import "variables";
+@import "media";
 
 footer {
     .insta-follow {
@@ -91,17 +92,19 @@ footer {
                     }
                 }
             }
-            @media (max-width: 790px) {
+            @include sm {
                 margin: unset;
                 text-align: unset;
                 h3 {
                     border-bottom: 1px solid rgba(gray, 0.3);
                     padding-bottom: 12px;
+                    padding-right: 25px; //để khi màn hình dưới 200px thì cái dấu "+" ko đè lên chữ, chữ có padding thì vùng của nó nhỏ hơn, chữ sẽ break xuống dòng dưới
                     i {
                         display: block;
                     }
 
                     &.content-closed{
+                       
                         ~p, ~.input-group{
                             display: none;
                         }
@@ -145,16 +148,27 @@ footer {
                     color: gray;
                     font-size: 13px;
                     padding: 15px 0 0 10px;
+                    text-align: center;
                 }
             }
             .payment-list {
-                width: 400px;
+                //width: 400px;
+                height: 18px;
                 ul {
                     display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
                     li {
+                        text-align: center;
+                        overflow: hidden;
                         margin-left: 5px;
                         position: relative;
                         a {
+                            display: block;
+                            img{
+                                height: 18px;
+                                width: initial;
+                            }
                             &::after {
                                 content: "";
                                 position: absolute;
@@ -176,7 +190,7 @@ footer {
                 }
             }
         }
-        @media (max-width: 790px) {
+        @include sm {
             .container {
                 flex-direction: column;
 
@@ -187,7 +201,7 @@ footer {
                 }
             }
         }
-        @media (max-width: 1024px) {
+        @include md {
             .container {
                 .about-page {
                     flex-direction: column;

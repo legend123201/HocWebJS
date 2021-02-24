@@ -1,4 +1,5 @@
 @import "variables";
+@import "media";
 
 section.women-products {
     margin: 30px 20px;
@@ -50,7 +51,6 @@ section.women-products {
                     background-color: rgba(gray, 0.1);
                 }
                 &:hover {
-                    
                     i {
                         background: $lightBlue !important;
                         color: white !important; //khi hover vào thì mất luôn cái icon nên thêm dòng này vào
@@ -68,8 +68,8 @@ section.women-products {
             //background-color: aqua;
             height: fit-content;
             overflow: hidden; //
-            .image{
-                .product-status{
+            .image {
+                .product-status {
                     position: absolute;
                     top: 10px;
                     left: 10px;
@@ -119,7 +119,7 @@ section.women-products {
                 .price {
                     margin-top: 4px;
                     font-size: 15px;
-                    .fixed-price{
+                    .fixed-price {
                         margin-right: 5px;
                         color: red;
                     }
@@ -279,25 +279,25 @@ section.women-products {
             }
         }
     }
-    @media (min-width: 1025px) {
-        .slider {
-            .item {
-                &:hover {
-                    .invisible-part {
-                        opacity: 1;
-                    }
+    //code cho screen lớn hơn md, màn hình nhỏ hơn vẫn chạy nếu như nó là máy tính
+    .slider {
+        .item {
+            &:hover {
+                .invisible-part {
+                    opacity: 1;
+                }
 
-                    .item-content {
-                        transform: translateY(-50px);
-                        .btn-add {
-                            opacity: 1;
-                        }
+                .item-content {
+                    transform: translateY(-50px);
+                    .btn-add {
+                        opacity: 1;
                     }
                 }
             }
         }
     }
-    @media (max-width: 1024px) {
+
+    @include md {
         .title {
             position: unset;
         }
@@ -311,17 +311,17 @@ section.women-products {
             }
         }
         .slider {
-            .owl-nav{
+            .owl-nav {
                 position: unset;
-                button.owl-prev{
+                button.owl-prev {
                     position: absolute;
-                    top:50%;
+                    top: 50%;
                     left: 0;
                     margin-left: -15px;
                 }
-                button.owl-next{
+                button.owl-next {
                     position: absolute;
-                    top:50%;
+                    top: 50%;
                     right: 0;
                     margin-right: -15px;
                 }
@@ -334,22 +334,33 @@ section.women-products {
                         position: unset;
                         transform: unset;
                         opacity: 1;
+                        a {
+                            white-space: unset;
+                            font-size: 14px;
+                        }
                     }
                 }
                 .invisible-part {
                     position: unset;
                     opacity: 1;
+                    margin-top: 10px;
                     ul {
                         display: flex;
                         justify-content: center;
+                        flex-wrap: wrap;
                         li {
                             a {
-                                margin: 10px 5px;
+                                margin: unset;
                             }
                             .description {
                                 display: none; //thay vì làm cái media cho hiệu ứng ko chạy thì cứ cho nó chạy nhưng display none
                             }
                         }
+                    }
+                }
+                &:hover{
+                    .item-content {
+                        transform: unset; //dòng này để loại bỏ hiệu ứng hover khi màn hình md trở xuống
                     }
                 }
             }

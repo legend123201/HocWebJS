@@ -1,7 +1,40 @@
-header .orange,
-header .blue,
-header .green,
-header .red {
+/*
+//chỉ có cái đầu là max-width, những cái sau là min-width để ví dụ khi cấu hình cho md, nhưng ko có lg, xl, thì cứ màn hình lớn hơn md thì vẫn sẽ có cấu hình đó 
+@mixin xs {
+    @media (max-width: 576px) {
+        @content;
+    }
+}
+
+@mixin sm {
+    @media (min-width: 576px) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media (min-width: 992px) {
+        @content;
+    }
+}
+
+@mixin xl {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+*/
+
+.orange,
+.blue,
+.green,
+.red {
 	font-size: 12px;
 	display: inline-block;
 	margin-left: 3px;
@@ -10,28 +43,21 @@ header .red {
 	border-radius: 3px;
 }
 
-header .orange {
+.orange {
 	background-color: orange;
 }
 
-header .blue {
+.blue {
 	background-color: rgba(12, 163, 250, .89);
 }
 
-header .green {
+.green {
 	background-color: #10a818;
 }
 
-header .red {
+.red {
 	background-color: red;
 }
-
-.part2 {
-	height: 1000px;
-	background-color: #f3d215;
-}
-
-@media (min-width: 1024px) {
 
 header.small-screen {
 	display: none;
@@ -398,9 +424,12 @@ header.big-screen.fixed .container .page-nav .logo {
 	display: none;
 }
 
+.part2 {
+	height: 1000px;
+	background-color: #f3d215;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 992px) {
 
 header.big-screen {
 	display: none;
@@ -563,7 +592,7 @@ header.small-screen.fixed {
 
 }
 
-@media (max-width: 1024px) and (max-width: 480px) {
+@media (max-width: 992px) and (max-width: 576px) {
 
 header.small-screen .container .personal-nav nav ul li:first-child {
 	flex: initial;
@@ -571,6 +600,14 @@ header.small-screen .container .personal-nav nav ul li:first-child {
 
 header.small-screen .container .personal-nav nav ul li:not(:first-child) {
 	margin-left: 0;
+}
+
+}
+
+@media (max-width: 992px) and (max-width: 250px) {
+
+header.small-screen .container .page-nav {
+	width: 90vw;
 }
 
 }

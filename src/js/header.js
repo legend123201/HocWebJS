@@ -96,7 +96,7 @@ $(window).on("load", function () {
     //khi chỉnh sửa màn hình thì cập nhật lại 1 số thứ
     $(window).resize(function () { 
         part2PositionTop = $("header").last().next().position().top;
-
+        widthNavLevel1 = $("header.small-screen .level-1").width();
     });
    
 });

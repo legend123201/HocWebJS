@@ -292,10 +292,13 @@ $(window).on("load", function () {
                 0: {
                     items: 2,
                 },
-                791: {
+                769: {
                     items: 3,
                 },
-                1025: {
+                993: {
+                    items: 4,
+                },
+                1201: {
                     items: 6,
                     nav: true,
                 }

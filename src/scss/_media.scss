@@ -9,6 +9,37 @@
 // lg = large < 1200
 // xl = extra large >= 1200
 
+@mixin xl {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media (max-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media (max-width: 992px) {
+        @content;
+    }
+}
+
+@mixin sm {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin xs {
+    @media (max-width: 576px) {
+        @content;
+    }
+}
+
+/*
 //chỉ có cái đầu là max-width, những cái sau là min-width để ví dụ khi cấu hình cho md, nhưng ko có lg, xl, thì cứ màn hình lớn hơn md thì vẫn sẽ có cấu hình đó 
 @mixin xs {
     @media (max-width: 576px) {
@@ -39,3 +70,4 @@
         @content;
     }
 }
+*/

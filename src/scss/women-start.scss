@@ -1,7 +1,11 @@
 @import "variables";
+@import "media";
 
 section.women-start {
-    background: url(/dist/img/background/backgroundWomen.png) no-repeat center/cover;
+    background: url(/dist/img/background/backgroundWomen.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     background-attachment: fixed;
     height: 650px;
     display: flex;
@@ -35,10 +39,13 @@ section.women-start {
             background-color: $darkblue;
         }
     }
-    @media (max-width: 400px) {
-        height: 250px;
+    
+    @include md {
+        background-attachment: scroll; //bỏ cái fixed, nếu ko hình ảnh sẽ ko cover full cái div chứa nó
+        height: 550px;
     }
-    @media (max-width: 789px) {
+    
+    @include sm {
         height: 350px;
         
         h2{
@@ -55,11 +62,10 @@ section.women-start {
             }
         }
     }
-    @media (max-width: $headerBreakpoint) {
-        background-attachment: initial; //bỏ cái fixed, nếu ko hình ảnh sẽ ko cover full cái div chứa nó
-        height: 550px;
+
+    @include xs {
+        height: 250px;
+        background-position: 0% 0%; // ko set center để khi zoom nhỏ cỡ 200 thì cái hình nó hiện cô gái bên trái của tấm hình
     }
-    //thuộc tính nào ở cái media max width cao hơn thì sẽ áp dụng cho tất cả các cái media max width nhỏ hơn nếu như cái nhỏ ko có thuộc tính đó
-    //nếu cái media max width nhỏ hơn cũng có thuộc tính đó thì nó ưu tiên cho cái nhỏ hơn
 }
 

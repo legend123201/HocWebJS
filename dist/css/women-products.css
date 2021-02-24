@@ -1,3 +1,36 @@
+/*
+//chỉ có cái đầu là max-width, những cái sau là min-width để ví dụ khi cấu hình cho md, nhưng ko có lg, xl, thì cứ màn hình lớn hơn md thì vẫn sẽ có cấu hình đó 
+@mixin xs {
+    @media (max-width: 576px) {
+        @content;
+    }
+}
+
+@mixin sm {
+    @media (min-width: 576px) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media (min-width: 992px) {
+        @content;
+    }
+}
+
+@mixin xl {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+*/
+
 section.women-products {
 	position: relative;
 	margin: 30px 20px;
@@ -293,8 +326,6 @@ section.women-products .slider .item .invisible-part ul li .description::before 
 	background-color: white;
 }
 
-@media (min-width: 1025px) {
-
 section.women-products .slider .item:hover .invisible-part {
 	opacity: 1;
 }
@@ -307,9 +338,7 @@ section.women-products .slider .item:hover .item-content .btn-add {
 	opacity: 1;
 }
 
-}
-
-@media (max-width: 1024px) {
+@media (max-width: 992px) {
 
 section.women-products .title {
 	position: unset;
@@ -353,22 +382,33 @@ section.women-products .slider .item .item-content .btn-add {
 	opacity: 1;
 }
 
+section.women-products .slider .item .item-content .btn-add a {
+	font-size: 14px;
+	white-space: unset;
+}
+
 section.women-products .slider .item .invisible-part {
 	position: unset;
+	margin-top: 10px;
 	opacity: 1;
 }
 
 section.women-products .slider .item .invisible-part ul {
 	display: flex;
 	justify-content: center;
+	flex-wrap: wrap;
 }
 
 section.women-products .slider .item .invisible-part ul li a {
-	margin: 10px 5px;
+	margin: unset;
 }
 
 section.women-products .slider .item .invisible-part ul li .description {
 	display: none;
+}
+
+section.women-products .slider .item:hover .item-content {
+	transform: unset;
 }
 
 }

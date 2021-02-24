@@ -123,6 +123,7 @@
                         }
                     }
                     input {
+                        text-align: center;
                         width: 0; //input ko sử dụng flex-grow hay flex-shrink đc, vì cái width của nó theo mặc định trình duyệt.
                         flex-grow: 1;
                         padding: 0 10px;
@@ -146,6 +147,7 @@
                 margin-top: 20px;
                 input {
                     margin-right: 10px;
+                    
                 }
             }
             #terms-agreement:checked {
