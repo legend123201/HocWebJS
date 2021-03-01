@@ -77,9 +77,22 @@ $(window).on("load", function () {
             let khucTangThem = headerBottomPositionWith10px - productDetailOffsetTop;
             $(".image").css({ "top": `${khucTangThem}px`, "left": "0", "bottom": `unset` });
         }
+    };
+    let flagScrollForImage;
+    if($(".product-detail__images .image").css("position") != "absolute"){
+        flagScrollForImage = function emptyFunc() {
+            //console.log("i am empty function");
+        };
     }
+    else{
+        flagScrollForImage = function funcScrollForImage() {
+            scrollExcuteCode();
+            //console.log("i am excute function");
+        };
+    }
+    
     $(window).scroll(function () {
-        scrollExcuteCode();
+        flagScrollForImage();
     });
     //-------------XỬ LÝ CUỘN CHUỘT CHO PRODUCT IMAGE POSITION CUỘN THEO TRANG WEB-----------END
 
@@ -105,6 +118,7 @@ $(window).on("load", function () {
         for (let i = 0; i < arrHeaderSelector.length; i++) {
             if ($(arrHeaderSelector[i]).css("display") != "none") {
                 currentHeaderSelector = arrHeaderSelector[i];
+                console.log(i);
             }
         }
 
@@ -112,9 +126,27 @@ $(window).on("load", function () {
         startBreakpoint = $(".product-detail").offset().top;
         productDetailOffsetBottom = $(".product-detail").offset().top + $(".product-detail").height();//cái nào ko có mar, pad nên dùng height() là đủ
         endBreakpoint = productDetailOffsetBottom - $(".product-detail__images .image").height();
-        $(currentHeaderSelector).addClass("fixed");
-        currentFixedHeaderOuterHeight = $(currentHeaderSelector).outerHeight(true);//header có margin
-        $(currentHeaderSelector).removeClass("fixed");
+        if($(currentHeaderSelector).hasClass("fixed")){
+            currentFixedHeaderOuterHeight = $(currentHeaderSelector).outerHeight(true);//header có margin
+        }else{
+            
+            $(currentHeaderSelector).addClass("fixed");
+            currentFixedHeaderOuterHeight = $(currentHeaderSelector).outerHeight(true);//header có margin
+            $(currentHeaderSelector).removeClass("fixed");
+        }
+        
         productDetailOffsetTop = $(".product-detail").offset().top;
+
+        if($(".product-detail__images .image").css("position") != "absolute"){
+            flagScrollForImage = function emptyFunc() {
+                //console.log("i am empty function");
+            };
+        }
+        else{
+            flagScrollForImage = function funcScrollForImage() {
+                scrollExcuteCode();
+                //console.log("i am excute function");
+            };
+        }
     });
 });

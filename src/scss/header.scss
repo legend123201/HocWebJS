@@ -49,13 +49,16 @@ header {
                         display: flex;
                         > li {
                             font-size: 13px;
+                            &:hover {                               
+                                >a{
+                                    color: blue;
+                                }
+                            }
                             > a {
                                 color: black;
                                 display: block;
                                 padding: 0 15px 15px 15px;
-                                &:hover {
-                                    color: blue;
-                                }
+                                
                             }
                             &:hover {
                                 .dropdown {

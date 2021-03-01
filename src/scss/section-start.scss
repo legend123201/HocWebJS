@@ -1,8 +1,15 @@
 @import "variables";
 @import "media";
 
-section.women-start {
+section.women-start{
     background: url(/dist/img/background/backgroundWomen.png);
+}
+
+section.men-start{
+    background: url(/dist/img/background/backgroundMan.png);
+}
+
+section.start-section {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

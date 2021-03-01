@@ -1,4 +1,12 @@
 $(window).on("load", function () {
+    $("header.big-screen").load("header.html .big-screen >*", function(){
+        $("header.small-screen").load("header.html .small-screen >*", function(){
+            CodeHeader();
+        });
+    });
+});
+
+function CodeHeader(){
     $('header.big-screen .owl-carousel').owlCarousel(
         //những option bên dưới ở chỗ api web owl carousel
         {
@@ -24,7 +32,7 @@ $(window).on("load", function () {
         //$(this).css("background-color", "red");
         currentIndexUpToNow++;
     });
-    
+
     //bấm vào nav level-2 thì level-1 lùi 200%
     //li:not(.back) nghĩa là li ko phải class back, có thể sửa là li:not(:first-child) nếu nó là first child
     $("header.small-screen .level-2 >ul >li:not(.back) >a").click(function (e) {
@@ -94,11 +102,20 @@ $(window).on("load", function () {
     });
 
     //khi chỉnh sửa màn hình thì cập nhật lại 1 số thứ
-    $(window).resize(function () { 
-        part2PositionTop = $("header").last().next().position().top;
+    $(window).resize(function () {
+        //khi resize phải đưa fake header về 0, vì khi chuyển mobile qua desktop hay ngược lại thì fake header của mỗi màn hình đương nhiên là khác nhau, mà ko set về 0 rồi lập lại thì khi chuyển laptop qua mobile chẳng hạn, thì cái fake vẫn giữ của laptop,rồi nó lấy cái part2Position bị sai là đương nhiên
+        $(".fake-header").css("height", "0");
+        if($("header").hasClass("fixed")){
+            $("header").removeClass("fixed");
+            part2PositionTop = $("header").last().next().offset().top;
+            $("header").addClass("fixed");
+            $(".fake-header").css("height", part2PositionTop);
+        }else{
+            part2PositionTop = $("header").last().next().offset().top;
+        }
+        part2PositionTop = $("header").last().next().offset().top;
         widthNavLevel1 = $("header.small-screen .level-1").width();
     });
-   
-});
+}
 
 

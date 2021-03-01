@@ -1,8 +1,9 @@
 @import "grid";
 @import "variables";
+@import "media";
 
 .path-to-page {
-    background-color: gainsboro;
+    background-color: $lightGray;
     margin-bottom: 50px;
 }
 
@@ -31,6 +32,11 @@
                     }
                 }
                 
+            }
+        }
+        @include sm{
+            .image{
+                position: unset;
             }
         }
     }
@@ -268,6 +274,33 @@
                     &:last-child {
                         border-bottom: unset;
                     }
+                }
+            }
+        }
+    }
+}
+
+.social-media-contact{
+    margin: 50px 0;
+    background-color: $lightGray;
+    padding: 15px 0;
+    ul{
+        li{
+            margin-right: 10px;
+            a{
+                display: block;
+                height: 30px;
+                width: 30px;
+                background-color: black;
+                position: relative;
+                border-radius: 4px;
+                i{
+                    font-size: 14px;
+                    color: white;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
                 }
             }
         }

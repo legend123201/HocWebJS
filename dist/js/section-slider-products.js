@@ -1,5 +1,12 @@
-
 $(window).on("load", function () {
+    $("section.women-products").load("section-slider-products.html section.women-products >*", function () {
+        $("section.men-products").load("section-slider-products.html section.men-products >*", function () {
+            CodeSectionSliderProducts();
+        });
+    });
+});
+
+function CodeSectionSliderProducts() {
     let product = [
         {
             id: 1,
@@ -276,9 +283,220 @@ $(window).on("load", function () {
             status: "",
             category: []
         }
+        /*,
+        {
+            id: 26,
+            name: "Ralph Coffee Hat",
+            gender: "women",
+            price: 120,
+            image: ["dist/img/products/Ralph Coffee Hat.jpg"],
+            brand: "LEVI'S",
+            rating: 0,
+            status: "",
+            category: []
+        },
+        {
+            id: 27,
+            name: "Ralph Coffee Hat",
+            gender: "women",
+            price: 120,
+            image: ["dist/img/products/Ralph Coffee Hat.jpg"],
+            brand: "LEVI'S",
+            rating: 0,
+            status: "",
+            category: []
+        },
+        {
+            id: 28,
+            name: "Ralph Coffee Hat",
+            gender: "women",
+            price: 120,
+            image: ["dist/img/products/Ralph Coffee Hat.jpg"],
+            brand: "LEVI'S",
+            rating: 0,
+            status: "",
+            category: []
+        },
+        {
+            id: 29,
+            name: "Ralph Coffee Hat",
+            gender: "women",
+            price: 120,
+            image: ["dist/img/products/Ralph Coffee Hat.jpg"],
+            brand: "LEVI'S",
+            rating: 0,
+            status: "",
+            category: []
+        },
+        {
+            id: 30,
+            name: "Ralph Coffee Hat",
+            gender: "women",
+            price: 120,
+            image: ["dist/img/products/Ralph Coffee Hat.jpg"],
+            brand: "LEVI'S",
+            rating: 0,
+            status: "",
+            category: []
+        },
+        {
+            id: 31,
+            name: "Ralph Coffee Hat",
+            gender: "women",
+            price: 120,
+            image: ["dist/img/products/Ralph Coffee Hat.jpg"],
+            brand: "LEVI'S",
+            rating: 0,
+            status: "",
+            category: []
+        },
+        {
+            id: 32,
+            name: "Ralph Coffee Hat",
+            gender: "women",
+            price: 120,
+            image: ["dist/img/products/Ralph Coffee Hat.jpg"],
+            brand: "LEVI'S",
+            rating: 0,
+            status: "",
+            category: []
+        },
+        {
+            id: 33,
+            name: "Ralph Coffee Hat",
+            gender: "women",
+            price: 120,
+            image: ["dist/img/products/Ralph Coffee Hat.jpg"],
+            brand: "LEVI'S",
+            rating: 0,
+            status: "",
+            category: []
+        },
+        {
+            id: 34,
+            name: "Ralph Coffee Hat",
+            gender: "women",
+            price: 120,
+            image: ["dist/img/products/Ralph Coffee Hat.jpg"],
+            brand: "LEVI'S",
+            rating: 0,
+            status: "",
+            category: []
+        },
+        {
+            id: 35,
+            name: "Ralph Coffee Hat",
+            gender: "women",
+            price: 120,
+            image: ["dist/img/products/Ralph Coffee Hat.jpg"],
+            brand: "LEVI'S",
+            rating: 0,
+            status: "",
+            category: []
+        },
+        {
+            id: 36,
+            name: "Ralph Coffee Hat",
+            gender: "women",
+            price: 120,
+            image: ["dist/img/products/Ralph Coffee Hat.jpg"],
+            brand: "LEVI'S",
+            rating: 0,
+            status: "",
+            category: []
+        },
+        {
+            id: 37,
+            name: "Ralph Coffee Hat",
+            gender: "women",
+            price: 120,
+            image: ["dist/img/products/Ralph Coffee Hat.jpg"],
+            brand: "LEVI'S",
+            rating: 0,
+            status: "",
+            category: []
+        },
+        {
+            id: 38,
+            name: "Ralph Coffee Hat",
+            gender: "women",
+            price: 120,
+            image: ["dist/img/products/Ralph Coffee Hat.jpg"],
+            brand: "LEVI'S",
+            rating: 0,
+            status: "",
+            category: []
+        },
+        {
+            id: 39,
+            name: "Ralph Coffee Hat",
+            gender: "women",
+            price: 120,
+            image: ["dist/img/products/Ralph Coffee Hat.jpg"],
+            brand: "LEVI'S",
+            rating: 0,
+            status: "",
+            category: []
+        },
+        {
+            id: 40,
+            name: "Ralph Coffee Hat",
+            gender: "women",
+            price: 120,
+            image: ["dist/img/products/Ralph Coffee Hat.jpg"],
+            brand: "LEVI'S",
+            rating: 0,
+            status: "",
+            category: []
+        },
+        {
+            id: 41,
+            name: "Ralph Coffee Hat",
+            gender: "women",
+            price: 120,
+            image: ["dist/img/products/Ralph Coffee Hat.jpg"],
+            brand: "LEVI'S",
+            rating: 0,
+            status: "",
+            category: []
+        },
+        {
+            id: 42,
+            name: "Ralph Coffee Hat",
+            gender: "women",
+            price: 120,
+            image: ["dist/img/products/Ralph Coffee Hat.jpg"],
+            brand: "LEVI'S",
+            rating: 0,
+            status: "",
+            category: []
+        },
+        {
+            id: 43,
+            name: "Ralph Coffee Hat",
+            gender: "women",
+            price: 120,
+            image: ["dist/img/products/Ralph Coffee Hat.jpg"],
+            brand: "LEVI'S",
+            rating: 0,
+            status: "",
+            category: []
+        },
+        {
+            id: 44,
+            name: "Ralph Coffee Hat",
+            gender: "women",
+            price: 120,
+            image: ["dist/img/products/Ralph Coffee Hat.jpg"],
+            brand: "LEVI'S",
+            rating: 0,
+            status: "",
+            category: []
+        }
+        */
     ]
 
-    $('.women-products .owl-carousel').owlCarousel(
+    $('.slider-products .owl-carousel').owlCarousel(
         //những option bên dưới ở chỗ api web owl carousel
         {
             items: 6,
@@ -307,11 +525,14 @@ $(window).on("load", function () {
     );
 
     let idSpecialwomen = 6;
-    renderProductsCarousel(product, ".women-products .owl-carousel", idSpecialwomen);
+    console.log("bitch");
+    console.log($(".women-products").html());
+    renderProductsCarousel(product, ".slider-products .owl-carousel", idSpecialwomen);
+    console.log("bitch2");
     //-----chọn parameters ở products------START
-    $(".women-products .slider .item .item-content .parameters .choose-image-references button").click(function (e) {
+    $(".slider-products .slider .item .item-content .parameters .choose-image-references button").click(function (e) {
         e.preventDefault();
-        $(".women-products .slider .item .item-content .parameters .choose-image-references button").removeClass("blueBorder");
+        $(".slider-products .slider .item .item-content .parameters .choose-image-references button").removeClass("blueBorder");
         $(this).addClass("blueBorder");
 
         //đổi hình
@@ -319,7 +540,7 @@ $(window).on("load", function () {
         let id = $(this).data("id-product"); //ko lấy ngược lên cha của nó đc nên dùng cách tạo và lấy id rồi tìm  
         console.log("href: " + href);
         console.log("id: " + id);
-        let arrItems = $(".women-products .owl-carousel .item"); //owl tự cloned các item, vậy nên có active và clone item, length sẽ đc gấp đôi lên, mình sửa cả clone và active là đc, html 2 cái giống nhau
+        let arrItems = $(".slider-products .owl-carousel .item"); //owl tự cloned các item, vậy nên có active và clone item, length sẽ đc gấp đôi lên, mình sửa cả clone và active là đc, html 2 cái giống nhau
         console.log("arrLen: " + arrItems.length);
         for (let i = 0; i < arrItems.length; i++) {
             let findId = $(arrItems[i]).data("id-product");
@@ -336,28 +557,38 @@ $(window).on("load", function () {
         //$(".women-products .owl-carousel").trigger('to.owl.carousel', 2);
 
     });
-    $(".women-products .slider .item .item-content .parameters .choose-size button").click(function (e) {
+    $(".slider-products .slider .item .item-content .parameters .choose-size button").click(function (e) {
         e.preventDefault();
-        $(".women-products .slider .item .item-content .parameters .choose-size button").removeClass("active");
+        $(".slider-products .slider .item .item-content .parameters .choose-size button").removeClass("active");
         $(this).addClass("active");
     });
-    $(".women-products .slider .item .item-content .parameters .choose-materials button").click(function (e) {
+    $(".slider-products .slider .item .item-content .parameters .choose-materials button").click(function (e) {
         e.preventDefault();
-        $(".women-products .slider .item .item-content .parameters .choose-materials button").removeClass("blueBorder");
+        $(".slider-products .slider .item .item-content .parameters .choose-materials button").removeClass("blueBorder");
         $(this).addClass("blueBorder");
     });
     //-----chọn parameters ở products------END
-});
+
+    $(".item >.image >a").click(function (e) {
+        //e.preventDefault();
+        const v = JSON.parse(localStorage.getItem("v")) || 0;
+        localStorage.setItem("v", JSON.stringify(v));
+        console.log("hitted");
+        console.log($(".women-products").html());
+    });
+}
 
 function renderProductsCarousel(list, selector, idSpecial) {
-
+    console.log("lala");
+    //console.log($(".women-products").html());
+    console.log("lolo");
     //thêm hàm reverse vì cái carousel này
     list.reverse().map((val, index) => {
         $(selector)
             .trigger("add.owl.carousel", [`
         <div class="item" data-id-product="${val.id}">
             <div class="image">
-                <img src="${val.image[0]}" alt="">
+                <a href=""><img src="${val.image[0]}" alt=""></a>
                 ${val.status !== "" ?
                     `
                 <div class="product-status">

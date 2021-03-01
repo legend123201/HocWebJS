@@ -93,14 +93,14 @@ header.big-screen .container .page-nav > nav > ul > li {
 	font-size: 13px;
 }
 
+header.big-screen .container .page-nav > nav > ul > li:hover > a {
+	color: blue;
+}
+
 header.big-screen .container .page-nav > nav > ul > li > a {
 	display: block;
 	padding: 0 15px 15px 15px;
 	color: black;
-}
-
-header.big-screen .container .page-nav > nav > ul > li > a:hover {
-	color: blue;
 }
 
 header.big-screen .container .page-nav > nav > ul > li:hover .dropdown {
