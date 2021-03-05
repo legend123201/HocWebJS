@@ -34,8 +34,9 @@ function CodeHeader(){
     });
 
     //bấm vào nav level-2 thì level-1 lùi 200%
-    //li:not(.back) nghĩa là li ko phải class back, có thể sửa là li:not(:first-child) nếu nó là first child
-    $("header.small-screen .level-2 >ul >li:not(.back) >a").click(function (e) {
+    //li:not(.back, .back +li) nghĩa là li ko phải class back, có thể sửa là li:not(:first-child) nếu nó là first child, và ko phải li ngay đằng sau của class back
+    //
+    $("header.small-screen .level-2 >ul >li:not(.back,.back +li) >a").click(function (e) {
         e.preventDefault();
         $("header.small-screen .level-1").css("transform", "translateX(-200%)");
         valueCurrentTranlateX -= widthNavLevel1;
@@ -117,5 +118,3 @@ function CodeHeader(){
         widthNavLevel1 = $("header.small-screen .level-1").width();
     });
 }
-
-

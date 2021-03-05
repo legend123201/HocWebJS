@@ -519,6 +519,14 @@ header {
                                             margin-right: 10px;
                                         }
                                     }
+                                    & + li{
+                                        a {
+                                            justify-content: initial;
+                                            &::after {
+                                                display: none !important;
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }

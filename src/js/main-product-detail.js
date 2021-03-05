@@ -1,12 +1,9 @@
 $(window).on("load", function () {
-    let arrHeaderSelector = $("header"); //arr các header
-    let currentHeaderSelector; //header nào đang hiện thì cho vào đây để sau này dùng 
-    for (let i = 0; i < arrHeaderSelector.length; i++) {
-        if ($(arrHeaderSelector[i]).css("display") != "none") {
-            currentHeaderSelector = arrHeaderSelector[i];
-        }
-    }
-
+    let idItemSpecified = Number(localStorage.getItem("idItemSpecified"));
+    let itemSpecified = products.find(i => i.id == idItemSpecified);
+    $(".product-name").text(itemSpecified.name);
+    $(".product-price").text("$" + itemSpecified.price);
+    $(".product-detail__images .main-img img").attr("src", itemSpecified.image[0]);
     /*
     //biến x này giải thích bên dưới
     let x = 0;
@@ -52,6 +49,14 @@ $(window).on("load", function () {
         }
     });
     */
+    let arrHeaderSelector = $("header"); //arr các header
+    let currentHeaderSelector; //header nào đang hiện thì cho vào đây để sau này dùng 
+    for (let i = 0; i < arrHeaderSelector.length; i++) {
+        if ($(arrHeaderSelector[i]).css("display") != "none") {
+            currentHeaderSelector = arrHeaderSelector[i];
+        }
+    }
+
     //-------------XỬ LÝ CUỘN CHUỘT CHO PRODUCT IMAGE POSITION CUỘN THEO TRANG WEB-----------START
     //headerBottomPositionWith10px nằm trong khoảng start và end break point thì mới sửa css
     let startBreakpoint = $(".product-detail").offset().top;
@@ -79,18 +84,18 @@ $(window).on("load", function () {
         }
     };
     let flagScrollForImage;
-    if($(".product-detail__images .image").css("position") != "absolute"){
+    if ($(".product-detail__images .image").css("position") != "absolute") {
         flagScrollForImage = function emptyFunc() {
             //console.log("i am empty function");
         };
     }
-    else{
+    else {
         flagScrollForImage = function funcScrollForImage() {
             scrollExcuteCode();
             //console.log("i am excute function");
         };
     }
-    
+
     $(window).scroll(function () {
         flagScrollForImage();
     });
@@ -126,23 +131,23 @@ $(window).on("load", function () {
         startBreakpoint = $(".product-detail").offset().top;
         productDetailOffsetBottom = $(".product-detail").offset().top + $(".product-detail").height();//cái nào ko có mar, pad nên dùng height() là đủ
         endBreakpoint = productDetailOffsetBottom - $(".product-detail__images .image").height();
-        if($(currentHeaderSelector).hasClass("fixed")){
+        if ($(currentHeaderSelector).hasClass("fixed")) {
             currentFixedHeaderOuterHeight = $(currentHeaderSelector).outerHeight(true);//header có margin
-        }else{
-            
+        } else {
+
             $(currentHeaderSelector).addClass("fixed");
             currentFixedHeaderOuterHeight = $(currentHeaderSelector).outerHeight(true);//header có margin
             $(currentHeaderSelector).removeClass("fixed");
         }
-        
+
         productDetailOffsetTop = $(".product-detail").offset().top;
 
-        if($(".product-detail__images .image").css("position") != "absolute"){
+        if ($(".product-detail__images .image").css("position") != "absolute") {
             flagScrollForImage = function emptyFunc() {
                 //console.log("i am empty function");
             };
         }
-        else{
+        else {
             flagScrollForImage = function funcScrollForImage() {
                 scrollExcuteCode();
                 //console.log("i am excute function");

@@ -559,6 +559,14 @@ header.small-screen .container .page-nav nav ul li.back a::before {
 	color: black;
 }
 
+header.small-screen .container .page-nav nav ul li.back + li a {
+	justify-content: initial;
+}
+
+header.small-screen .container .page-nav nav ul li.back + li a::after {
+	display: none !important;
+}
+
 header.small-screen .container .page-nav nav.level-1 {
 	position: relative;
 	transition: all .4s;
