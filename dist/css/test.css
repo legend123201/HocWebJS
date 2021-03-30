@@ -698,6 +698,19 @@ footer .end-part .container .payment-list ul li a:hover::after {
 	transform: translateY(-100%);
 }
 
+.delete {
+	width: 50px;
+	background-color: aqua;
+}
+
+.delete p {
+	font-size: 10px;
+	overflow: hidden;
+	width: 100%;
+	text-overflow: ellipsis;
+	background-color: red;
+}
+
 @media (min-width: 1200px) {
 
 .row .col-xl-1 {
