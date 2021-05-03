@@ -465,6 +465,7 @@ header.small-screen .container .personal-nav nav ul li:not(:first-child) {
 
 header.small-screen .container .modal {
 	position: fixed;
+	z-index: 50;
 	top: 0;
 	left: 0;
 	display: none;

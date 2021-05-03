@@ -1,6 +1,6 @@
 $(window).on("load", function () {
-    $("section.women-products").load("section-slider-products.html section.women-products >*", function () {
-        $("section.men-products").load("section-slider-products.html section.men-products >*", function () {
+    $("section.women-products").load("html-section-slider-products.html section.women-products >*", function () {
+        $("section.men-products").load("html-section-slider-products.html section.men-products >*", function () {
             CodeSectionSliderProducts();
         });
     });
@@ -94,7 +94,7 @@ function renderProductsCarousel(list, selector, idSpecial) {
             .trigger("add.owl.carousel", [`
         <div class="item" data-id-product="${val.id}">
             <div class="image">
-                <a href="/main-product-detail.html"><img src="${val.image[0]}" alt=""></a>
+                <a href="/html-main-product-detail.html"><img src="${val.image[0]}" alt=""></a>
                 ${val.status !== "" ?
                     `
                 <div class="product-status">

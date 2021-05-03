@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $( ".big-screen" ).load( "header.html .big-screen >*" );
+    $( ".big-screen" ).load( "html-header.html .big-screen >*" );
 
     $("h1").click(function (e) { 
         e.preventDefault();

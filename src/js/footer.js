@@ -1,5 +1,5 @@
 $(window).on("load", function () {
-    $("footer").load("footer.html footer >*", function(){
+    $("footer").load("html-footer.html footer >*", function(){
         CodeFooter();
     });
     
