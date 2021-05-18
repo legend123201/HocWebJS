@@ -60,6 +60,7 @@ function CodeHeader(){
         $("header.small-screen .page-nav").css("transform", "translateX(-101%)");
         $("header.small-screen .modal").fadeOut();//cái này mờ dần sau đó display none, siêu đã
         //$("header.small-screen .modal").css("display", "none"); //cái này ko xài vì mất nhanh
+        $("body").css("overflow", "unset"); //page nav mất đi thì cho trang đc phép scroll như bình thường
     });
 
     //bấm vào humberger-btn thì page nav hiện ra
@@ -68,9 +69,11 @@ function CodeHeader(){
         $("header.small-screen .page-nav").css("transform", "translateX(0)");
         //$("header.small-screen .modal").css("display", "block");
         $("header.small-screen .modal").fadeIn();//cái này hiện dần sau đó display block, siêu đã
-
+       
         //dòng này quan trọng, nãy mình tắt page nav thì mình tắt transition, giờ phải mở lại
         $("header.small-screen .level-1").css("transition", "all 0.4s");
+
+        $("body").css("overflow", "hidden"); //page nav hiện lên thì ko cho scroll tùm lum trên page nữa
     });
 
     $("header.small-screen .modal").click(function (e) {
