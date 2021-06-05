@@ -2,16 +2,21 @@
 @import "media";
 
 section.slider-products {
-    margin: 30px 20px;
     //background-color: aqua;
+    margin: 30px 20px;
     position: relative;
+
+    //trên phần đầu tiên có title, nav-wrapper và 2 cái chuyển hướng của caroulsel.
+    //2 cái chuyển hướng thì chắc chắn position absolute rồi, tại nó ở cái thế giới nào đó mình mang nó lên đầu
+    //còn title với nav-wrapper thì 1 cái phải là absolute và 1 cái là ko, bỏi vì tụi nó cùng hàng mà có giao diện như thế mà. Cái nào là absolute cũng đc, nhưng sau khi làm nhiều page khác liên quan thì phải là cái nav absolute vì những cái form khác dùng đến form này thậm chí còn ko có nav-wrapper
     .title {
-        position: absolute;
-        top: 0;
-        left: 0;
+        margin-bottom: 50px;
     }
     .nav-wrapper {
-        margin-bottom: 50px;
+        position: absolute;
+        top:0;
+        left: 50%;
+        transform: translateX(-50%);
         nav {
             ul {
                 display: flex;
@@ -19,9 +24,10 @@ section.slider-products {
                 li {
                     a {
                         display: block;
-                        padding: 10px 20px 10px 0;
+                        padding: 5px 20px 10px 0;
                         color: gray;
                         font-size: 14px;
+                        white-space: nowrap;
                         &:hover {
                             color: black;
                         }
@@ -68,7 +74,7 @@ section.slider-products {
             //background-color: aqua;
             height: fit-content;
             overflow: hidden; //
-            
+
             .image {
                 .product-status {
                     position: absolute;
@@ -111,6 +117,10 @@ section.slider-products {
                             margin-top: 12px;
                             color: black;
                             font-size: 13px;
+                            //muốn xài text-overflow thì cần 2 dòng white-space: nowrap; overflow: hidden;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
                             &:hover {
                                 color: blue;
                             }
@@ -141,7 +151,7 @@ section.slider-products {
                         color: white;
                         border-radius: 6px;
                         transition: all 0.4s;
-                        &:hover{
+                        &:hover {
                             background-color: $darkblue;
                         }
                     }
@@ -211,7 +221,7 @@ section.slider-products {
                 right: 0;
                 top: 0;
                 transition: all 0.3s;
-                
+
                 ul {
                     li {
                         position: relative;
@@ -307,9 +317,11 @@ section.slider-products {
 
     @include md {
         .title {
-            position: unset;
+            margin-bottom: 30px;
         }
         .nav-wrapper {
+            position: unset;
+            transform: unset;
             margin-bottom: 30px;
             nav {
                 ul {
@@ -366,7 +378,7 @@ section.slider-products {
                         }
                     }
                 }
-                &:hover{
+                &:hover {
                     .item-content {
                         transform: unset; //dòng này để loại bỏ hiệu ứng hover khi màn hình md trở xuống
                     }

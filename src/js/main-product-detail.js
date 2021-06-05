@@ -62,6 +62,12 @@ $(window).on("load", function () {
     let startBreakpoint = $(".product-detail").offset().top;
     let productDetailOffsetBottom = $(".product-detail").offset().top + $(".product-detail").height();//cái nào ko có mar, pad nên dùng height() là đủ
     let endBreakpoint = productDetailOffsetBottom - $(".product-detail__images .image").height();
+    let xxx = $(".social-media-contact").offset().top;
+    var xxx2 = $(".social-media-contact").position();
+    var top = xxx2.top;
+    var left = xxx2.left;
+    
+    //DrawALine(100);
 
     //mình phải lấy đc chiều cao lúc header fixed, vì header lúc đầu có cái hình nên height rất là cao, trên web cũng chỉ xử lý với height đã fixed
     $(currentHeaderSelector).addClass("fixed");
@@ -115,7 +121,48 @@ $(window).on("load", function () {
     });
     //-------------ẤN VÀO TIÊU ĐỀ DECRIPTION THÌ DROPDOWN TRƯỢT LÊN TRƯỢT XUỐNG------------END
 
+    //-------------LOAD VÀO SLIDE PRODUCTS------------START
+    $('.slider-products .owl-carousel').owlCarousel(
+        //những option bên dưới ở chỗ api web owl carousel
+        {
+            items: 4,
+            margin: 20,
+            loop: true,
+            nav: true,
+            navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
+            dots: false,
 
+            responsive: {
+                0: {
+                    items: 2,
+                },
+                769: {
+                    items: 3,
+                },
+                993: {
+                    items: 4,
+                },
+                1201: {
+                    items: 4,
+                    nav: true,
+                }
+            }
+        }
+    );
+    let idSpecialwomen = -1;
+    renderProductsCarousel(products, ".slider-products .owl-carousel", idSpecialwomen);
+    //-------------LOAD VÀO SLIDE PRODUCTS------------END
+
+    //-------------LOAD VÀO SLICK SUB-IMAGES------------START
+    $('.sub-images').slick({
+        slidesToShow: 5,
+        // slidesToScroll: 1,
+        // dots: false,
+        vertical: true,
+        verticalSwiping: true,
+        arrows: true
+      });
+    //-------------LOAD VÀO SLICK SUB-IMAGES------------END
 
     //khi chỉnh sửa màn hình thì cập nhật lại 1 số thứ
     $(window).resize(function () {

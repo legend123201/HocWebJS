@@ -37,13 +37,14 @@ section.slider-products {
 }
 
 section.slider-products .title {
-	position: absolute;
-	top: 0;
-	left: 0;
+	margin-bottom: 50px;
 }
 
 section.slider-products .nav-wrapper {
-	margin-bottom: 50px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 section.slider-products .nav-wrapper nav ul {
@@ -54,7 +55,8 @@ section.slider-products .nav-wrapper nav ul {
 section.slider-products .nav-wrapper nav ul li a {
 	font-size: 14px;
 	display: block;
-	padding: 10px 20px 10px 0;
+	padding: 5px 20px 10px 0;
+	white-space: nowrap;
 	color: gray;
 }
 
@@ -151,7 +153,10 @@ section.slider-products .slider .item .item-content .product-group a .evaluate {
 
 section.slider-products .slider .item .item-content .product-group a .name {
 	font-size: 13px;
+	overflow: hidden;
 	margin-top: 12px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 	color: black;
 }
 
@@ -348,11 +353,13 @@ section.slider-products .slider .item:hover .item-content .btn-add {
 @media (max-width: 992px) {
 
 section.slider-products .title {
-	position: unset;
+	margin-bottom: 30px;
 }
 
 section.slider-products .nav-wrapper {
+	position: unset;
 	margin-bottom: 30px;
+	transform: unset;
 }
 
 section.slider-products .nav-wrapper nav ul {

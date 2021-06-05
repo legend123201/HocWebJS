@@ -10,10 +10,13 @@
     <link rel="stylesheet" href="dist\css\initial.css">
     <link rel="stylesheet" href="dist\css\main-product-detail.css">
     <link rel="stylesheet" href="dist\css\header.css">
+    <link rel="stylesheet" href="dist\css\section-slider-products.css">
     <link rel="stylesheet" href="dist\css\footer.css">
     <link rel="stylesheet" href="dist\css\all.min.css">
     <link rel="stylesheet" href="dist/css/owl.carousel.min.css">
     <link rel="stylesheet" href="dist/css/owl.theme.default.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="dist/slick/slick-theme.css" />
     <!-- word font link -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -38,12 +41,15 @@
                     <div class="image">
                         <div class="row">
                             <div class="sub-images col-2">
-                                <ul>
-                                    <li><img src="dist/img/products/Polka-Dot Lightweight Scarf.jpg" alt=""></li>
-                                    <li><img src="dist/img/products/Polka-Dot Lightweight Scarf.jpg" alt=""></li>
-                                    <li><img src="dist/img/products/Polka-Dot Lightweight Scarf.jpg" alt=""></li>
-                                    <li><img src="dist/img/products/Polka-Dot Lightweight Scarf.jpg" alt=""></li>
-                                </ul>
+                                    <div class="item"><img src="dist/img/products/Polka-Dot Lightweight Scarf.jpg" alt=""></div>
+                                    <div class="item"><img src="dist/img/products/Polka-Dot Lightweight Scarf.jpg" alt=""></div>
+                                    <div class="item"><img src="dist/img/products/Polka-Dot Lightweight Scarf.jpg" alt=""></div>
+                                    <div class="item"><img src="dist/img/products/Polka-Dot Lightweight Scarf.jpg" alt=""></div>
+                                    <div class="item"><img src="dist/img/products/Polka-Dot Lightweight Scarf.jpg" alt=""></div>
+                                    <div class="item"><img src="dist/img/products/Polka-Dot Lightweight Scarf.jpg" alt=""></div>
+                                    <div class="item"><img src="dist/img/products/Polka-Dot Lightweight Scarf.jpg" alt=""></div>
+                                    <div class="item"><img src="dist/img/products/Polka-Dot Lightweight Scarf.jpg" alt=""></div>
+                                    
                             </div>
                             <div class="main-img col-10">
                                 <img src="dist/img/products/Polka-Dot Lightweight Scarf.jpg" alt="">
@@ -109,8 +115,12 @@
                     </form>
                     <div class="personal-options">
                         <ul class="flex">
-                            <li><a href=""> <i class="far fa-heart"></i> <p>ADD TO WISHLIST</p> </a></li>
-                            <li><a href=""><i class="fas fa-balance-scale"></i><p>ADD TO COMPARE</p></a></li>
+                            <li><a href=""> <i class="far fa-heart"></i>
+                                    <p>ADD TO WISHLIST</p>
+                                </a></li>
+                            <li><a href=""><i class="fas fa-balance-scale"></i>
+                                    <p>ADD TO COMPARE</p>
+                                </a></li>
                         </ul>
                     </div>
                     <div class="payment-list">
@@ -165,7 +175,7 @@
                                         <p>No reviews yet</p>
                                         <a href="">Write a review</a>
                                     </div>
-                                    
+
                                 </div>
                             </li>
                         </ul>
@@ -175,7 +185,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="social-media-contact">
         <ul class="flex j-center">
             <li><a href=""><i class="fab fa-twitter"></i></a></li>
@@ -186,6 +196,17 @@
         </ul>
     </div>
 
+    <section class="slider-products">
+        <div class="container">
+            <div class="title">
+                <h2>RELATE</h2>
+            </div>
+
+            <div class="slider owl-carousel owl-theme">
+            </div>
+        </div>
+    </section>
+
     <footer></footer>
 
     <!-- cdn phải nằm trên cùng ?? why -->
@@ -193,6 +214,8 @@
         integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
         crossorigin="anonymous"></script>
     <script src="dist/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="dist/slick/slick.min.js"></script>
+    <script src="src/js/global-functions.js"></script>
     <script src="src/js/load-products.js"></script>
     <script src="src/js/header.js"></script>
     <script src="src/js/main-product-detail.js"></script>

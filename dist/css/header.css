@@ -205,25 +205,25 @@ header.big-screen .container .page-nav > nav > ul > li .dropdown .specials-part 
 	font-weight: 600;
 }
 
-header.big-screen .container .page-nav > nav > ul > li .dropdown .specials-part .slider.row .item a .image img {
+header.big-screen .container .page-nav > nav > ul > li .dropdown .specials-part .slider .item a .image img {
 	width: 100%;
 }
 
-header.big-screen .container .page-nav > nav > ul > li .dropdown .specials-part .slider.row .item a .item-content {
+header.big-screen .container .page-nav > nav > ul > li .dropdown .specials-part .slider .item a .item-content {
 	margin-top: 5px;
 	color: black;
 }
 
-header.big-screen .container .page-nav > nav > ul > li .dropdown .specials-part .slider.row .item a .item-content .name {
+header.big-screen .container .page-nav > nav > ul > li .dropdown .specials-part .slider .item a .item-content .name {
 	line-height: 1.5;
 }
 
-header.big-screen .container .page-nav > nav > ul > li .dropdown .specials-part .slider.row .item a .item-content .price {
+header.big-screen .container .page-nav > nav > ul > li .dropdown .specials-part .slider .item a .item-content .price {
 	font-size: 15px;
 	margin-top: 5px;
 }
 
-header.big-screen .container .page-nav > nav > ul > li .dropdown .specials-part .slider.row .item a:hover .name {
+header.big-screen .container .page-nav > nav > ul > li .dropdown .specials-part .slider .item a:hover .name {
 	color: blue;
 }
 

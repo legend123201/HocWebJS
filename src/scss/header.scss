@@ -49,8 +49,8 @@ header {
                         display: flex;
                         > li {
                             font-size: 13px;
-                            &:hover {                               
-                                >a{
+                            &:hover {
+                                > a {
                                     color: blue;
                                 }
                             }
@@ -58,7 +58,6 @@ header {
                                 color: black;
                                 display: block;
                                 padding: 0 15px 15px 15px;
-                                
                             }
                             &:hover {
                                 .dropdown {
@@ -155,30 +154,29 @@ header {
                                                 font-weight: 600;
                                             }
                                         }
-                                        &.row {
-                                            .item {
-                                                //background-color: aquamarine;
-                                                a {
-                                                    .image {
-                                                        img {
-                                                            width: 100%;
-                                                        }
+
+                                        .item {
+                                            //background-color: aquamarine;
+                                            a {
+                                                .image {
+                                                    img {
+                                                        width: 100%;
                                                     }
-                                                    .item-content {
+                                                }
+                                                .item-content {
+                                                    margin-top: 5px;
+                                                    color: black;
+                                                    .name {
+                                                        line-height: 1.5;
+                                                    }
+                                                    .price {
                                                         margin-top: 5px;
-                                                        color: black;
-                                                        .name {
-                                                            line-height: 1.5;
-                                                        }
-                                                        .price {
-                                                            margin-top: 5px;
-                                                            font-size: 15px;
-                                                        }
+                                                        font-size: 15px;
                                                     }
-                                                    &:hover {
-                                                        .name {
-                                                            color: blue;
-                                                        }
+                                                }
+                                                &:hover {
+                                                    .name {
+                                                        color: blue;
                                                     }
                                                 }
                                             }
@@ -520,7 +518,7 @@ header {
                                             margin-right: 10px;
                                         }
                                     }
-                                    & + li{
+                                    & + li {
                                         a {
                                             justify-content: initial;
                                             &::after {

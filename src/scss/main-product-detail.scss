@@ -9,7 +9,7 @@
 
 .product-detail {
     &__images {
-        background-color: red;
+        //background-color: red;
         position: relative;
 
         .image {
@@ -22,26 +22,45 @@
                 position: fixed;
             }
 
-            .sub-images{
-                ul{
-                    li{
-                        padding-right: 20px;
-                        &:not(first-child){
-                            padding-bottom: 20px;
-                        }
+            .sub-images {
+                //position: relative;
+                .item {
+                    padding-right: 20px;
+                    &:not(first-child) {
+                        padding-bottom: 20px;
                     }
                 }
-                
+                .slick-arrow{
+                    background-color: aqua;
+                    //mặc định cha của slick-arrow thì có position relative sẵn, và cái next và prev cũng là absolute sẵn, có top, left,... hẳn hoi lun
+                    &.slick-next{
+                        top: unset;
+                        bottom: 0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        z-index: 50;
+                    }
+                    &.slick-prev{
+                        top: 0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        z-index: 50;
+                    }
+                }
             }
         }
-        @include sm{
-            .image{
+        @include sm {
+            .image {
                 position: unset;
             }
         }
     }
     &__content {
         padding-left: 40px !important;
+        @include sm {
+            padding-left: 0px !important;
+            padding-top: 20px !important;
+        }
         @mixin blackThenGrayText {
             p {
                 font-size: 14px;
@@ -165,7 +184,6 @@
                 margin-top: 20px;
                 input {
                     margin-right: 10px;
-                    
                 }
             }
             #terms-agreement:checked {
@@ -228,7 +246,7 @@
                         display: block;
                     }
                 }
-                li:last-child{
+                li:last-child {
                     margin-right: 0 !important;
                 }
             }
@@ -280,21 +298,21 @@
     }
 }
 
-.social-media-contact{
+.social-media-contact {
     margin: 50px 0;
     background-color: $lightGray;
     padding: 15px 0;
-    ul{
-        li{
+    ul {
+        li {
             margin-right: 10px;
-            a{
+            a {
                 display: block;
                 height: 30px;
                 width: 30px;
                 background-color: black;
                 position: relative;
                 border-radius: 4px;
-                i{
+                i {
                     font-size: 14px;
                     color: white;
                     position: absolute;
@@ -304,5 +322,11 @@
                 }
             }
         }
+    }
+}
+
+.slider-products {
+    .container {
+        position: relative;
     }
 }
