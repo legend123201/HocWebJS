@@ -37,7 +37,7 @@ a {
     //     width: 95%;
     // }
     @media (max-width:1199px) {
-        width: 94%; //xài grid thì có margin số âm, nó sẽ lòi ra khỏi container, nên cho width container nhỏ lại chút
+        width: 94%; //xài grid (là .row .col-md-2 này nọ) thì có margin số âm, nó sẽ lòi ra khỏi container, nên cho width container nhỏ lại chút
         margin: 0 auto;
     }
     @include xl {

@@ -90,11 +90,11 @@ function CodeHeader(){
 
     $("body").prepend("<div class='fake-header'></div>");
     //lấy khoảng cách từ part2 lên trên cùng page
-    let part2PositionTop = $("header").last().next().position().top; //có 2 header, thì lấy cái header cuối trỏ next là ra cái part2.
+    let part2PositionTop; //có 2 header, thì lấy cái header cuối trỏ next là ra cái part2.
     
     //bắt sự kiện trang web cuộn chuột
     $(window).scroll(function () {
-        part2PositionTop = $("header").last().next().position().top;
+        part2PositionTop = $("header").last().next().offset().top;
         //DrawALine(part2PositionTop);
         //bắt sự kiện nếu qua phần position top part2 thì header fixed, position top part2 này thực ra có thay đổi, nhưng mình chỉ lấy cái giá trị đầu tiên khi trang đc load làm chuẩn và cho vào biến const, làm như thế thì khi cuộn sẽ tạo cảm giác cái header luôn ở đó
         //$(window).scrollTop(); //lấy vị trí trên của màn hình để tính
@@ -116,10 +116,7 @@ function CodeHeader(){
             part2PositionTop = $("header").last().next().offset().top;
             $("header").addClass("fixed");
             $(".fake-header").css("height", part2PositionTop);
-        }else{
-            part2PositionTop = $("header").last().next().offset().top;
         }
-        part2PositionTop = $("header").last().next().offset().top;
         widthNavLevel1 = $("header.small-screen .level-1").width();
     });
 }

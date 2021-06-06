@@ -4,78 +4,38 @@ $(window).on("load", function () {
     $(".product-name").text(itemSpecified.name);
     $(".product-price").text("$" + itemSpecified.price);
     $(".product-detail__images .main-img img").attr("src", itemSpecified.image[0]);
-    /*
-    //biến x này giải thích bên dưới
-    let x = 0;
-    let productDetailOffsetTop = $(".product-detail").offset().top;
-    let imageWrapperOffsetBottom = $(".product-detail__images").offset().top + $(".product-detail__images").height(); //ko cần lấy margin (outerHeight) vì .image ko có margin
-    //bắt sự kiện trang web cuộn chuột
-    $(window).scroll(function () {
-        //lấy chiều cao của header + 10px là ra đường break point chuẩn để position cái image
-        let headerBottomPositionWith10px = $(window).scrollTop() + $(currentHeaderSelector).outerHeight(true) + 10;
-        if(headerBottomPositionWith10px < productDetailOffsetTop){
-            $(".image").css({ "top": `0px`, "left": "0", "bottom": `unset` });
-            return;
-        }
-        if (imageOffsetBottom + 2 > imageWrapperOffsetBottom) {
-            $(".image").css({ "bottom": `0px`, "left": "0", "top": "unset" });
-            if (x == 0) {
-                x = $(".product-detail__images .image").offset().top;            
-            }
 
-        }
 
-        let imageOffsetBottom = $(".product-detail__images .image").offset().top + $(".product-detail__images .image").height();
-
-        //nếu có class fixed thì mới thay đổi position của image
-        if ($(currentHeaderSelector).hasClass("fixed")) {
-            
-
-            //cái mệnh đề bên trái dành cho kéo xuống, bên phải dành cho kéo lên
-            //kéo xuống thì cập nhật top cho image khi vị trí bottom của image vẫn nhỏ hơn vị trí bottom thằng cha chứa nó, cộng 2 để làm to số lên 2 đơn vị, vì khi css bottom:0; cho cái image, thì vị trí bottom của nó với vị trí của thằng cha nó cách nhau 0.00001, cái image nó cứ nhỏ hơn hoài (vì image nằm trong cha của nó), đây là sự chênh lệch số học hi hữu
-            //kéo lên thì cái đường break point chuẩn mà đụng vào cái top của cái image khi nó có css bottom:0 thì bắt đầu cập nhật top cho nó lại, cho nó đi lên. biến x khởi tạo là 0, chỉ đc cập nhật khi mà cái image css bottom 0 lần đầu tiên
-            if ((headerBottomPositionWith10px >= productDetailOffsetTop && imageOffsetBottom + 2 <= imageWrapperOffsetBottom) || headerBottomPositionWith10px <= x) {
-                //đường break point chuẩn đụng cái product-detail là thay đổi top liền
-                //if (headerBottomPositionWith10px >= productDetailOffsetTop) {
-                    let khucTangThem = headerBottomPositionWith10px - productDetailOffsetTop;
-                    $(".image").css({ "top": `${khucTangThem}px`, "left": "0", "bottom": `unset` });
-                //}
-                // } else {
-                //     $(".image").css({ "top": `0px`, "left": "0", "bottom": `unset` });
-                // }
-            }
-            
-            
-        }
-    });
-    */
     let arrHeaderSelector = $("header"); //arr các header
     let currentHeaderSelector; //header nào đang hiện thì cho vào đây để sau này dùng 
     for (let i = 0; i < arrHeaderSelector.length; i++) {
+        //display đc cấu hình trong css nên ko lo html hay js của header chưa load, có thể để vòng for này ở ngoài hàm scroll
         if ($(arrHeaderSelector[i]).css("display") != "none") {
             currentHeaderSelector = arrHeaderSelector[i];
         }
     }
 
     //-------------XỬ LÝ CUỘN CHUỘT CHO PRODUCT IMAGE POSITION CUỘN THEO TRANG WEB-----------START
-    //headerBottomPositionWith10px nằm trong khoảng start và end break point thì mới sửa css
-    let startBreakpoint = $(".product-detail").offset().top;
-    let productDetailOffsetBottom = $(".product-detail").offset().top + $(".product-detail").height();//cái nào ko có mar, pad nên dùng height() là đủ
-    let endBreakpoint = productDetailOffsetBottom - $(".product-detail__images .image").height();
-    let xxx = $(".social-media-contact").offset().top;
-    var xxx2 = $(".social-media-contact").position();
-    var top = xxx2.top;
-    var left = xxx2.left;
-    
-    //DrawALine(100);
-
-    //mình phải lấy đc chiều cao lúc header fixed, vì header lúc đầu có cái hình nên height rất là cao, trên web cũng chỉ xử lý với height đã fixed
-    $(currentHeaderSelector).addClass("fixed");
-    let currentFixedHeaderOuterHeight = $(currentHeaderSelector).outerHeight(true);//header có margin
-    $(currentHeaderSelector).removeClass("fixed");
-
-    let productDetailOffsetTop = $(".product-detail").offset().top;
     function scrollExcuteCode() {
+        //Từ đầu các biến, các đoạn xử lý đc để ở ngoài để tối ưu code, mỗi khi hàm này đc gọi (gọi trong hàm scroll) thì gọi ít thôi, nhưng vì file này liên quan tới file header.js, nó cần file đó chạy xong, mà nó lại chạy song song với file header.js, nên html của header (dòng load() bên file header) chưa load xong mà cái này đã chạy. dẫn đến việc outerHeight sai, offset và position cũng sai
+        //Muốn tối ưu hơn còn 1 cách tạo 1 cái flag, là đã scroll lần đầu hay chưa, chưa thì chạy code nhập giá trị này kia cho các biến, còn rồi thì chạy các dòng cần thiết thôi
+
+        //mình phải lấy đc chiều cao lúc header fixed, vì header lúc đầu có cái hình nên height rất là cao, trên web cũng chỉ xử lý với height đã fixed
+        let currentFixedHeaderOuterHeight;
+        if ($(currentHeaderSelector).hasClass("fixed") == false) {
+            $(currentHeaderSelector).addClass("fixed");
+            currentFixedHeaderOuterHeight = $(currentHeaderSelector).outerHeight(true);//header có padding
+            $(currentHeaderSelector).removeClass("fixed");
+        }
+        else{
+            currentFixedHeaderOuterHeight = $(currentHeaderSelector).outerHeight(true);//header có padding
+        }
+
+        //headerBottomPositionWith10px nằm trong khoảng start và end break point thì mới sửa css
+        let startBreakpoint = $(".product-detail").offset().top;
+        let productDetailOffsetBottom = $(".product-detail").offset().top + $(".product-detail").height();//cái nào ko có mar, pad nên dùng height() là đủ
+        let endBreakpoint = productDetailOffsetBottom - $(".product-detail__images .image").height();
+
         //lấy chiều cao của header + 10px là ra đường break point chuẩn để position cái image
         let headerBottomPositionWith10px = $(window).scrollTop() + currentFixedHeaderOuterHeight + 10;
         if (headerBottomPositionWith10px < startBreakpoint) {
@@ -85,26 +45,16 @@ $(window).on("load", function () {
             $(".image").css({ "bottom": `0px`, "left": "0", "top": "unset" });
         }
         else {
+            let productDetailOffsetTop = $(".product-detail").offset().top;
             let khucTangThem = headerBottomPositionWith10px - productDetailOffsetTop;
             $(".image").css({ "top": `${khucTangThem}px`, "left": "0", "bottom": `unset` });
         }
     };
-    let flagScrollForImage;
-    if ($(".product-detail__images .image").css("position") != "absolute") {
-        flagScrollForImage = function emptyFunc() {
-            //console.log("i am empty function");
-        };
-    }
-    else {
-        flagScrollForImage = function funcScrollForImage() {
-            scrollExcuteCode();
-            //console.log("i am excute function");
-        };
-    }
 
     $(window).scroll(function () {
-        flagScrollForImage();
+        scrollExcuteCode(); //hàm scrollExcuteCode() ko chỉ đc gọi ở đây, nó còn đc gọi ở 1 nơi khác, đây chính là lí do tạo ra hàm này
     });
+
     //-------------XỬ LÝ CUỘN CHUỘT CHO PRODUCT IMAGE POSITION CUỘN THEO TRANG WEB-----------END
 
     //-------------ẤN VÀO TIÊU ĐỀ DECRIPTION THÌ DROPDOWN TRƯỢT LÊN TRƯỢT XUỐNG------------START
@@ -161,7 +111,7 @@ $(window).on("load", function () {
         vertical: true,
         verticalSwiping: true,
         arrows: true
-      });
+    });
     //-------------LOAD VÀO SLICK SUB-IMAGES------------END
 
     //khi chỉnh sửa màn hình thì cập nhật lại 1 số thứ
@@ -170,35 +120,7 @@ $(window).on("load", function () {
         for (let i = 0; i < arrHeaderSelector.length; i++) {
             if ($(arrHeaderSelector[i]).css("display") != "none") {
                 currentHeaderSelector = arrHeaderSelector[i];
-                console.log(i);
             }
-        }
-
-        //cập nhật lại các biến để postion image
-        startBreakpoint = $(".product-detail").offset().top;
-        productDetailOffsetBottom = $(".product-detail").offset().top + $(".product-detail").height();//cái nào ko có mar, pad nên dùng height() là đủ
-        endBreakpoint = productDetailOffsetBottom - $(".product-detail__images .image").height();
-        if ($(currentHeaderSelector).hasClass("fixed")) {
-            currentFixedHeaderOuterHeight = $(currentHeaderSelector).outerHeight(true);//header có margin
-        } else {
-
-            $(currentHeaderSelector).addClass("fixed");
-            currentFixedHeaderOuterHeight = $(currentHeaderSelector).outerHeight(true);//header có margin
-            $(currentHeaderSelector).removeClass("fixed");
-        }
-
-        productDetailOffsetTop = $(".product-detail").offset().top;
-
-        if ($(".product-detail__images .image").css("position") != "absolute") {
-            flagScrollForImage = function emptyFunc() {
-                //console.log("i am empty function");
-            };
-        }
-        else {
-            flagScrollForImage = function funcScrollForImage() {
-                scrollExcuteCode();
-                //console.log("i am excute function");
-            };
         }
     });
 });
