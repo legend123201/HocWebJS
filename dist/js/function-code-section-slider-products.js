@@ -1,12 +1,4 @@
-$(window).on("load", function () {
-    $("section.women-products").load("html-section-slider-products.html section.women-products >*", function () {
-        $("section.men-products").load("html-section-slider-products.html section.men-products >*", function () {
-            CodeSectionSliderProducts();
-        });
-    });
-});
-
-function CodeSectionSliderProducts() {
+function FunctionCodeSectionSliderProducts() {
     $('.slider-products .owl-carousel').owlCarousel(
         //những option bên dưới ở chỗ api web owl carousel
         {

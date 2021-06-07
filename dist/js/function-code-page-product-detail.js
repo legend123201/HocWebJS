@@ -1,4 +1,4 @@
-$(window).on("load", function () {
+function FunctionCodePageProductDetail(){
     let idItemSpecified = Number(localStorage.getItem("idItemSpecified"));
     let itemSpecified = products.find(i => i.id == idItemSpecified);
     $(".product-name").text(itemSpecified.name);
@@ -9,7 +9,6 @@ $(window).on("load", function () {
     let arrHeaderSelector = $("header"); //arr các header
     let currentHeaderSelector; //header nào đang hiện thì cho vào đây để sau này dùng 
     for (let i = 0; i < arrHeaderSelector.length; i++) {
-        //display đc cấu hình trong css nên ko lo html hay js của header chưa load, có thể để vòng for này ở ngoài hàm scroll
         if ($(arrHeaderSelector[i]).css("display") != "none") {
             currentHeaderSelector = arrHeaderSelector[i];
         }
@@ -17,8 +16,7 @@ $(window).on("load", function () {
 
     //-------------XỬ LÝ CUỘN CHUỘT CHO PRODUCT IMAGE POSITION CUỘN THEO TRANG WEB-----------START
     function scrollExcuteCode() {
-        //Từ đầu các biến, các đoạn xử lý đc để ở ngoài để tối ưu code, mỗi khi hàm này đc gọi (gọi trong hàm scroll) thì gọi ít thôi, nhưng vì file này liên quan tới file header.js, nó cần file đó chạy xong, mà nó lại chạy song song với file header.js, nên html của header (dòng load() bên file header) chưa load xong mà cái này đã chạy. dẫn đến việc outerHeight sai, offset và position cũng sai
-        //Muốn tối ưu hơn còn 1 cách tạo 1 cái flag, là đã scroll lần đầu hay chưa, chưa thì chạy code nhập giá trị này kia cho các biến, còn rồi thì chạy các dòng cần thiết thôi
+        //hồi xưa chưa control đc code js nào chạy trc và sau, nên html header chưa load kịp mà code này đã chạy, giờ đã control đc, muốn tối ưu hơn thì các hàm các biến nào đc khởi tạo chỉ đúng 1 giá trị xuyên suốt code thì nên để ra ngoài, hàm scroll chạy thì nó xử lý ít hơn
 
         //mình phải lấy đc chiều cao lúc header fixed, vì header lúc đầu có cái hình nên height rất là cao, trên web cũng chỉ xử lý với height đã fixed
         let currentFixedHeaderOuterHeight;
@@ -31,22 +29,22 @@ $(window).on("load", function () {
             currentFixedHeaderOuterHeight = $(currentHeaderSelector).outerHeight(true);//header có padding
         }
 
-        //headerBottomPositionWith10px nằm trong khoảng start và end break point thì mới sửa css
+        //headerBottomPositionWith20px nằm trong khoảng start và end break point thì mới sửa css
         let startBreakpoint = $(".product-detail").offset().top;
         let productDetailOffsetBottom = $(".product-detail").offset().top + $(".product-detail").height();//cái nào ko có mar, pad nên dùng height() là đủ
         let endBreakpoint = productDetailOffsetBottom - $(".product-detail__images .image").height();
 
-        //lấy chiều cao của header + 10px là ra đường break point chuẩn để position cái image
-        let headerBottomPositionWith10px = $(window).scrollTop() + currentFixedHeaderOuterHeight + 10;
-        if (headerBottomPositionWith10px < startBreakpoint) {
+        //lấy chiều cao của header + 20px là ra đường break point chuẩn để position cái image
+        let headerBottomPositionWith20px = $(window).scrollTop() + currentFixedHeaderOuterHeight + 20;
+        if (headerBottomPositionWith20px < startBreakpoint) {
             $(".image").css({ "top": `0px`, "left": "0", "bottom": `unset` });
         }
-        else if (headerBottomPositionWith10px > endBreakpoint) {
+        else if (headerBottomPositionWith20px > endBreakpoint) {
             $(".image").css({ "bottom": `0px`, "left": "0", "top": "unset" });
         }
         else {
             let productDetailOffsetTop = $(".product-detail").offset().top;
-            let khucTangThem = headerBottomPositionWith10px - productDetailOffsetTop;
+            let khucTangThem = headerBottomPositionWith20px - productDetailOffsetTop;
             $(".image").css({ "top": `${khucTangThem}px`, "left": "0", "bottom": `unset` });
         }
     };
@@ -105,7 +103,7 @@ $(window).on("load", function () {
 
     //-------------LOAD VÀO SLICK SUB-IMAGES------------START
     $('.sub-images').slick({
-        slidesToShow: 5,
+        slidesToShow: 4,
         // slidesToScroll: 1,
         // dots: false,
         vertical: true,
@@ -123,4 +121,4 @@ $(window).on("load", function () {
             }
         }
     });
-});
+}

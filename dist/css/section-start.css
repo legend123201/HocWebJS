@@ -35,8 +35,16 @@ section.women-start {
 	background: url(/dist/img/background/backgroundWomen.png);
 }
 
+section.women-start p {
+	color: white;
+}
+
 section.men-start {
 	background: url(/dist/img/background/backgroundMan.png);
+}
+
+section.men-start p {
+	color: black;
 }
 
 section.start-section {
@@ -62,7 +70,6 @@ section.start-section p {
 	line-height: 70px;
 	margin-top: 15px;
 	text-align: center;
-	color: white;
 }
 
 section.start-section .btn-shop {

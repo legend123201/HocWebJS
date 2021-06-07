@@ -3,10 +3,16 @@
 
 section.women-start{
     background: url(/dist/img/background/backgroundWomen.png);
+    p{
+        color: white;
+    }
 }
 
 section.men-start{
     background: url(/dist/img/background/backgroundMan.png);
+    p{
+        color: black;
+    }
 }
 
 section.start-section {
@@ -28,7 +34,6 @@ section.start-section {
         margin-top: 15px;
         font-size: 70px;
         text-align: center;
-        color: white;
         line-height: 70px;
     }
     .btn-shop {

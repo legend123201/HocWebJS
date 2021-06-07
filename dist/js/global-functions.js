@@ -5,7 +5,7 @@ function renderProductsCarousel(list, selector, idSpecial) {
             .trigger("add.owl.carousel", [`
         <div class="item" data-id-product="${val.id}">
             <div class="image">
-                <a href="/html-main-product-detail.html"><img src="${val.image[0]}" alt=""></a>
+                <a href="/html-page-product-detail.html"><img src="${val.image[0]}" alt=""></a>
                 ${val.status !== "" ?
                     `
                 <div class="product-status">

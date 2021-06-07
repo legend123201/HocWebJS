@@ -1,12 +1,4 @@
-$(window).on("load", function () {
-    $("header.big-screen").load("html-header.html .big-screen >*", function(){
-        $("header.small-screen").load("html-header.html .small-screen >*", function(){
-            CodeHeader();
-        });
-    });
-});
-
-function CodeHeader(){
+function FunctionCodeHeader(){
     $('header.big-screen .owl-carousel').owlCarousel(
         //những option bên dưới ở chỗ api web owl carousel
         {
