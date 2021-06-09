@@ -12,7 +12,10 @@
         //background-color: red;
         position: relative;
 
-        .image {
+        .images-small-screen{
+            display: none;
+        }
+        .images-big-screen {
             position: absolute;
             top: 0;
             left: 0;
@@ -23,37 +26,80 @@
             }
 
             .sub-images {
-                //position: relative;
-                .item {
-                    padding-right: 20px;
-                    &:not(first-child) {
-                        padding-bottom: 20px;
+                margin-right: 20px;
+               
+                //giãn cách giữa các item, lấy trên stack overflow
+                .slick-list {
+                    margin-bottom: -10px;
+                    .slick-slide {
+                        margin-bottom: 10px;
                     }
                 }
-                .slick-arrow{
-                    background-color: aqua;
-                    //mặc định cha của slick-arrow thì có position relative sẵn, và cái next và prev cũng là absolute sẵn, có top, left,... hẳn hoi lun
-                    &.slick-next{
-                        top: unset;
-                        bottom: 0;
+
+                .slick-arrow {
+                    position: absolute;
+                    bottom: 0;
+
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: rgba(gray, 0.1);
+
+                    &.next-arrow {
+                        //cách đặt vị trí ko cần quan tâm cái width pixel thực tế của next và prev
+                        //next để left 50% thôi thì mép trái của nó đã ở giữa, mình dịch nó qua phải 10% chính độ to của nó là đẹp (10%)
+                        //prev để left 50% thôi thì mép trái của nó cũng ở giữa, mình dịch trái 100% để mép phải của nó đúng ở giữa, và dịch trái thêm 10% là đẹp (-110%)
                         left: 50%;
-                        transform: translateX(-50%);
-                        z-index: 50;
+                        transform: translate(10%, 100%);
                     }
-                    &.slick-prev{
-                        top: 0;
+
+                    &.prev-arrow {
                         left: 50%;
-                        transform: translateX(-50%);
-                        z-index: 50;
+                        transform: translate(-110%, 100%);
                     }
-                }
+                }                
             }
-        }
-        @include sm {
-            .image {
+            @include sm {
                 position: unset;
             }
         }
+        
+        @include xs{
+            .images-big-screen{
+                display: none;
+
+            }
+            .images-small-screen{
+                display: block;
+
+                .slick-arrow {
+                    position: absolute;
+                    z-index: 100;
+
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    &.next-arrow {
+                        top: 50%;
+                        right: 0;
+                        transform: translate(0, -50%);
+                    }
+
+                    &.prev-arrow {
+                        top: 50%;
+                        left: 0;
+                        transform: translate(0, -50%);
+                    }
+                }     
+            }
+        }
+        
     }
     &__content {
         padding-left: 40px !important;

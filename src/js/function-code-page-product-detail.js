@@ -1,4 +1,4 @@
-function FunctionCodePageProductDetail(){
+function FunctionCodePageProductDetail() {
     let idItemSpecified = Number(localStorage.getItem("idItemSpecified"));
     let itemSpecified = products.find(i => i.id == idItemSpecified);
     $(".product-name").text(itemSpecified.name);
@@ -25,7 +25,7 @@ function FunctionCodePageProductDetail(){
             currentFixedHeaderOuterHeight = $(currentHeaderSelector).outerHeight(true);//header có padding
             $(currentHeaderSelector).removeClass("fixed");
         }
-        else{
+        else {
             currentFixedHeaderOuterHeight = $(currentHeaderSelector).outerHeight(true);//header có padding
         }
 
@@ -101,16 +101,25 @@ function FunctionCodePageProductDetail(){
     renderProductsCarousel(products, ".slider-products .owl-carousel", idSpecialwomen);
     //-------------LOAD VÀO SLIDE PRODUCTS------------END
 
-    //-------------LOAD VÀO SLICK SUB-IMAGES------------START
+    //-------------LOAD VÀO SLICK images-big-screen SUB-IMAGES------------START
     $('.sub-images').slick({
         slidesToShow: 4,
-        // slidesToScroll: 1,
-        // dots: false,
         vertical: true,
         verticalSwiping: true,
-        arrows: true
+        arrows: true,
+        prevArrow: '<i class="slick-arrow prev-arrow fas fa-chevron-up"></i>',
+        nextArrow: '<i class="slick-arrow next-arrow fas fa-chevron-down"></i>'
     });
-    //-------------LOAD VÀO SLICK SUB-IMAGES------------END
+    //-------------LOAD VÀO SLICK images-big-screen SUB-IMAGES------------END
+
+    //-------------LOAD VÀO SLICK images-small-screen------------START
+    $('.images-small-screen').slick({
+        slidesToShow: 1,
+        arrows: true,
+        prevArrow: '<i class="slick-arrow prev-arrow fas fa-chevron-left"></i>',
+        nextArrow: '<i class="slick-arrow next-arrow fas fa-chevron-right"></i>'
+    });
+    //-------------LOAD VÀO SLICK images-small-screen------------END
 
     //khi chỉnh sửa màn hình thì cập nhật lại 1 số thứ
     $(window).resize(function () {
